@@ -7,7 +7,6 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - API
   - Gaming
   - Roblox
 url: >-
@@ -24,8 +23,7 @@ apis:
       functions, events, callbacks, and properties that you can use when
       creating on Roblox.
     humanURL: https://create.roblox.com/docs/reference/engine
-    tags:
-      - API
+    tags: []
     properties:
       - type: Documentation
         url: https://create.roblox.com/docs/reference/engine
