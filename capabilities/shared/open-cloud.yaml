@@ -1,0 +1,481 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Roblox Open Cloud API"
+  description: >-
+    The Roblox Open Cloud API provides external programmatic access to Roblox
+    platform resources including experiences, places, data stores, users,
+    groups, assets, and messaging. API key authentication scoped to resources.
+  tags:
+    - Gaming
+    - Open Cloud
+    - REST API
+    - Roblox
+    - Game Development
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      ROBLOX_API_KEY: ROBLOX_API_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: roblox
+      baseUri: https://apis.roblox.com
+      description: "Roblox Open Cloud API"
+      authentication:
+        type: apikey
+        key: x-api-key
+        value: "{{ROBLOX_API_KEY}}"
+        placement: header
+      resources:
+        - name: universes
+          path: /cloud/v2/universes/{universeId}
+          description: "Experience (universe) management"
+          operations:
+            - name: get-universe
+              method: GET
+              description: "Get details about a Roblox experience"
+              inputParameters:
+                - name: universeId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The universe ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: update-universe
+              method: PATCH
+              description: "Update settings for an experience"
+              inputParameters:
+                - name: universeId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The universe ID"
+                - name: updateMask
+                  in: query
+                  type: string
+                  required: false
+                  description: "Fields to update"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  displayName: "{{tools.displayName}}"
+                  description: "{{tools.description}}"
+
+        - name: places
+          path: /cloud/v2/universes/{universeId}/places/{placeId}
+          description: "Place management"
+          operations:
+            - name: get-place
+              method: GET
+              description: "Get details about a place"
+              inputParameters:
+                - name: universeId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The universe ID"
+                - name: placeId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The place ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: data-stores
+          path: /datastores/v1/universes/{universeId}/standard-datastores
+          description: "Data store listing"
+          operations:
+            - name: list-data-stores
+              method: GET
+              description: "List all data stores in a universe"
+              inputParameters:
+                - name: universeId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The universe ID"
+                - name: prefix
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by name prefix"
+                - name: limit
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Maximum results"
+                - name: cursor
+                  in: query
+                  type: string
+                  required: false
+                  description: "Pagination cursor"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: data-store-entries
+          path: /datastores/v1/universes/{universeId}/standard-datastores/datastore/entries/entry
+          description: "Data store entry operations"
+          operations:
+            - name: get-data-store-entry
+              method: GET
+              description: "Retrieve a data store entry value"
+              inputParameters:
+                - name: universeId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The universe ID"
+                - name: datastoreName
+                  in: query
+                  type: string
+                  required: true
+                  description: "Data store name"
+                - name: entryKey
+                  in: query
+                  type: string
+                  required: true
+                  description: "Entry key"
+                - name: scope
+                  in: query
+                  type: string
+                  required: false
+                  description: "Entry scope (default: global)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: set-data-store-entry
+              method: POST
+              description: "Set or update a data store entry"
+              inputParameters:
+                - name: universeId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The universe ID"
+                - name: datastoreName
+                  in: query
+                  type: string
+                  required: true
+                  description: "Data store name"
+                - name: entryKey
+                  in: query
+                  type: string
+                  required: true
+                  description: "Entry key"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  value: "{{tools.value}}"
+
+            - name: delete-data-store-entry
+              method: DELETE
+              description: "Delete a data store entry"
+              inputParameters:
+                - name: universeId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The universe ID"
+                - name: datastoreName
+                  in: query
+                  type: string
+                  required: true
+                  description: "Data store name"
+                - name: entryKey
+                  in: query
+                  type: string
+                  required: true
+                  description: "Entry key"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: messaging
+          path: /messaging-service/v1/universes/{universeId}/topics/{topic}
+          description: "Cross-server messaging"
+          operations:
+            - name: publish-message
+              method: POST
+              description: "Publish a message to a topic across game servers"
+              inputParameters:
+                - name: universeId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The universe ID"
+                - name: topic
+                  in: path
+                  type: string
+                  required: true
+                  description: "Message topic name"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  message: "{{tools.message}}"
+
+        - name: users
+          path: /cloud/v2/users/{userId}
+          description: "User information"
+          operations:
+            - name: get-user
+              method: GET
+              description: "Get a Roblox user by ID"
+              inputParameters:
+                - name: userId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The Roblox user ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: groups
+          path: /cloud/v2/groups/{groupId}
+          description: "Group management"
+          operations:
+            - name: get-group
+              method: GET
+              description: "Get a Roblox group by ID"
+              inputParameters:
+                - name: groupId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The group ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: group-memberships
+          path: /cloud/v2/groups/{groupId}/memberships
+          description: "Group membership management"
+          operations:
+            - name: list-group-memberships
+              method: GET
+              description: "List members and their roles in a group"
+              inputParameters:
+                - name: groupId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The group ID"
+                - name: maxPageSize
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Maximum results per page"
+                - name: pageToken
+                  in: query
+                  type: string
+                  required: false
+                  description: "Pagination token"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: user-restrictions
+          path: /cloud/v2/universes/{universeId}/user-restrictions/{userId}
+          description: "User ban management"
+          operations:
+            - name: get-user-restriction
+              method: GET
+              description: "Check if a user is restricted from a universe"
+              inputParameters:
+                - name: universeId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The universe ID"
+                - name: userId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The user ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: update-user-restriction
+              method: PATCH
+              description: "Ban or unban a user from a universe"
+              inputParameters:
+                - name: universeId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The universe ID"
+                - name: userId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The user ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  active: "{{tools.active}}"
+                  duration: "{{tools.duration}}"
+                  displayReason: "{{tools.displayReason}}"
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: roblox-rest
+      resources:
+        - path: /v1/universes/{universeId}
+          name: universe
+          description: "Experience management"
+          operations:
+            - method: GET
+              name: get-universe
+              description: "Get universe details"
+              call: "roblox.get-universe"
+              with:
+                universeId: "rest.universeId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/users/{userId}
+          name: user
+          description: "User information"
+          operations:
+            - method: GET
+              name: get-user
+              description: "Get user details"
+              call: "roblox.get-user"
+              with:
+                userId: "rest.userId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: roblox-mcp
+      transport: http
+      tools:
+        - name: get-universe
+          description: "Get details about a Roblox experience"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "roblox.get-universe"
+          with:
+            universeId: "tools.universeId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-user
+          description: "Get information about a Roblox user"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "roblox.get-user"
+          with:
+            userId: "tools.userId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-data-stores
+          description: "List all data stores in a universe"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "roblox.list-data-stores"
+          with:
+            universeId: "tools.universeId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-data-store-entry
+          description: "Retrieve a data store entry value by key"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "roblox.get-data-store-entry"
+          with:
+            universeId: "tools.universeId"
+            datastoreName: "tools.datastoreName"
+            entryKey: "tools.entryKey"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: publish-message
+          description: "Publish a message to all servers in a universe"
+          hints:
+            readOnly: false
+            destructive: false
+          call: "roblox.publish-message"
+          with:
+            universeId: "tools.universeId"
+            topic: "tools.topic"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-group
+          description: "Get information about a Roblox group"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "roblox.get-group"
+          with:
+            groupId: "tools.groupId"
+          outputParameters:
+            - type: object
+              mapping: "$."

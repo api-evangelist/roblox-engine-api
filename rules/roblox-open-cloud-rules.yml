@@ -1,0 +1,120 @@
+extends: spectral:oas
+rules:
+  # Roblox Open Cloud API Conventions
+
+  roblox-operation-has-tag:
+    description: All operations must have at least one tag
+    message: Operation {{path}} is missing a tag
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: truthy
+
+  roblox-operation-has-summary:
+    description: All operations must have a summary
+    message: Operation {{path}} is missing a summary
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: summary
+      function: truthy
+
+  roblox-operation-has-operation-id:
+    description: All operations must have an operationId
+    message: Operation {{path}} is missing an operationId
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  roblox-api-key-auth:
+    description: Roblox Open Cloud uses x-api-key header authentication
+    message: Security scheme should use apiKey with x-api-key header
+    severity: warn
+    given: "$.components.securitySchemes[*]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - apiKey
+            in:
+              type: string
+              enum:
+                - header
+            name:
+              type: string
+              enum:
+                - x-api-key
+
+  roblox-versioned-cloud-paths:
+    description: Open Cloud v2 paths should use /cloud/v2/ prefix
+    message: Cloud API path {{path}} should use /cloud/v2/ prefix
+    severity: info
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/(cloud|datastores|messaging-service|assets|universes)/"
+
+  roblox-universe-id-path-param:
+    description: Universe endpoints should use universeId as path parameter
+    message: Universe ID path parameter should be named universeId
+    severity: warn
+    given: "$.paths[*][*].parameters[?(@.in === 'path' && @.name === 'universe_id')]"
+    then:
+      function: falsy
+
+  roblox-camel-case-operation-id:
+    description: OperationIds should use camelCase
+    message: OperationId {{value}} should use camelCase
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]+$"
+
+  roblox-pagination-uses-page-token:
+    description: Cloud v2 list endpoints should use pageToken for pagination
+    message: List operation {{path}} should support pageToken for pagination
+    severity: info
+    given: "$.paths[*].get.parameters[?(@.name === 'pageToken')]"
+    then:
+      field: schema.type
+      function: pattern
+      functionOptions:
+        match: "^string$"
+
+  roblox-responses-have-error-schema:
+    description: Error responses should reference an error schema
+    message: Error response {{path}} should define a schema
+    severity: warn
+    given: "$.paths[*][*].responses[4*].content[*]"
+    then:
+      field: schema
+      function: truthy
+
+  roblox-patch-uses-update-mask:
+    description: PATCH operations should support updateMask query parameter
+    message: PATCH operation {{path}} should support updateMask for partial updates
+    severity: info
+    given: "$.paths[*].patch"
+    then:
+      field: parameters
+      function: truthy
+
+  roblox-schema-has-description:
+    description: Schema components should have descriptions
+    message: Schema {{path}} is missing a description
+    severity: info
+    given: "$.components.schemas[*]"
+    then:
+      field: description
+      function: truthy

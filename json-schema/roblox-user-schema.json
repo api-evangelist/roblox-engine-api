@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/roblox-engine-api/json-schema/roblox-user-schema.json",
+  "title": "Roblox User",
+  "description": "Schema for a Roblox user resource from the Open Cloud API.",
+  "type": "object",
+  "properties": {
+    "path": {
+      "type": "string",
+      "description": "Resource path in format users/{userId}"
+    },
+    "createTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Account creation timestamp"
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique Roblox user identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Unique username"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Display name shown in-game"
+    },
+    "about": {
+      "type": "string",
+      "description": "User profile bio"
+    },
+    "locale": {
+      "type": "string",
+      "description": "User locale setting"
+    },
+    "premium": {
+      "type": "boolean",
+      "description": "Whether the user has Roblox Premium"
+    },
+    "idVerified": {
+      "type": "boolean",
+      "description": "Whether the user's identity has been verified"
+    }
+  },
+  "required": ["id", "name"]
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Roblox Universe",
+  "description": "Structure documentation for the Roblox Open Cloud universe (experience) object",
+  "type": "object",
+  "fields": [
+    { "name": "id", "type": "string", "required": true, "description": "Universe identifier" },
+    { "name": "displayName", "type": "string", "required": true, "description": "Public experience name" },
+    { "name": "description", "type": "string", "required": false, "description": "Experience description" },
+    { "name": "visibility", "type": "enum", "values": ["public", "private"], "required": false },
+    { "name": "socialLinks", "type": "array", "required": false, "description": "Associated social links",
+      "items": [
+        { "name": "type", "type": "string", "required": false },
+        { "name": "url", "type": "uri", "required": false }
+      ]
+    },
+    { "name": "createTime", "type": "datetime", "required": false },
+    { "name": "updateTime", "type": "datetime", "required": false }
+  ]
+}

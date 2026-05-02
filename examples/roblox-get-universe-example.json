@@ -1,0 +1,21 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://apis.roblox.com/cloud/v2/universes/1234567890",
+    "headers": {
+      "x-api-key": "YOUR_API_KEY"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "1234567890",
+      "displayName": "Adventure World",
+      "description": "An epic adventure game with quests, crafting, and exploration.",
+      "visibility": "public",
+      "socialLinks": [],
+      "createTime": "2024-01-15T10:00:00Z",
+      "updateTime": "2026-04-30T18:45:00Z"
+    }
+  }
+}

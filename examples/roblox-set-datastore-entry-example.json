@@ -1,0 +1,31 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://apis.roblox.com/datastores/v1/universes/1234567890/standard-datastores/datastore/entries/entry",
+    "headers": {
+      "x-api-key": "YOUR_API_KEY",
+      "Content-Type": "application/json"
+    },
+    "queryParameters": {
+      "datastoreName": "PlayerData",
+      "entryKey": "player_987654321",
+      "scope": "global"
+    },
+    "body": {
+      "coins": 1500,
+      "level": 25,
+      "inventory": ["sword", "shield", "potion"],
+      "lastLogin": "2026-05-02T10:00:00Z"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "version": "02D7EB0A41CBF89700000001",
+      "deleted": false,
+      "contentLength": 95,
+      "createdTime": "2026-05-02T10:01:00Z",
+      "objectCreatedTime": "2024-01-20T08:00:00Z"
+    }
+  }
+}

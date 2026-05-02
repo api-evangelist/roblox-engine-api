@@ -1,0 +1,143 @@
+vocabulary:
+  name: Roblox Platform Vocabulary
+  description: >-
+    Domain vocabulary for the Roblox platform covering game development,
+    the Open Cloud API, experience management, and community concepts.
+  version: "1.0.0"
+  created: "2026-05-02"
+
+terms:
+  - term: Universe
+    definition: >-
+      The top-level container for a Roblox experience (game), encompassing
+      all places, assets, and data. Referred to as universeId in the API.
+    category: Platform Object
+    relatedTerms:
+      - Place
+      - Experience
+      - DataStore
+
+  - term: Experience
+    definition: >-
+      A Roblox game or interactive world created by developers, accessible
+      to players. Synonymous with Universe.
+    category: Platform Concept
+    relatedTerms:
+      - Universe
+      - Place
+
+  - term: Place
+    definition: >-
+      A specific scene or level within a Universe. A universe can have
+      multiple places, each with its own server configuration.
+    category: Platform Object
+    relatedTerms:
+      - Universe
+
+  - term: OpenCloud
+    definition: >-
+      Roblox's external REST API platform that provides programmatic access
+      to universe data, player information, assets, and platform services
+      from outside the Roblox engine.
+    category: API Platform
+    relatedTerms:
+      - ApiKey
+
+  - term: DataStore
+    definition: >-
+      A persistent key-value storage system for Roblox experiences, used to
+      save and retrieve player and game data between sessions.
+    category: Platform Service
+    relatedTerms:
+      - MemoryStore
+      - Universe
+
+  - term: MemoryStore
+    definition: >-
+      An ephemeral, high-speed shared storage for temporary data within an
+      experience, such as leaderboards and matchmaking queues.
+    category: Platform Service
+    relatedTerms:
+      - DataStore
+
+  - term: MessagingService
+    definition: >-
+      A cross-server communication service enabling messages to be published
+      from external systems to all active game servers in a universe.
+    category: Platform Service
+    relatedTerms:
+      - Universe
+      - Topic
+
+  - term: ApiKey
+    definition: >-
+      An authentication credential for the Open Cloud API, scoped to
+      specific resources and operations. Passed in the x-api-key header.
+    category: Authentication Concept
+    relatedTerms:
+      - OpenCloud
+
+  - term: Luau
+    definition: >-
+      The scripting language used within the Roblox engine, a typed dialect
+      of Lua optimized for game development on the platform.
+    category: Technology
+
+  - term: EngineAPI
+    definition: >-
+      The in-engine Roblox API documenting all classes, services, data types,
+      enumerations, and functions available for Luau scripting.
+    category: API Platform
+    relatedTerms:
+      - Luau
+
+  - term: UserRestriction
+    definition: >-
+      A ban or restriction applied to a Roblox user preventing them from
+      accessing a specific universe for a defined duration.
+    category: Moderation
+    relatedTerms:
+      - Universe
+      - User
+
+  - term: Group
+    definition: >-
+      A community organization on Roblox that players can join and participate
+      in, with roles and permissions managed by group owners.
+    category: Community Object
+    relatedTerms:
+      - GroupMembership
+
+  - term: Asset
+    definition: >-
+      A reusable resource on the Roblox platform such as models, images,
+      audio files, animations, and scripts.
+    category: Platform Object
+
+  - term: Badge
+    definition: >-
+      An award given to players for achieving specific milestones within
+      a Roblox experience.
+    category: Platform Object
+    relatedTerms:
+      - GamePass
+
+  - term: GamePass
+    definition: >-
+      A purchasable item granting players permanent in-game benefits or
+      access to specific features in a Roblox experience.
+    category: Monetization Object
+    relatedTerms:
+      - Badge
+
+  - term: Premium
+    definition: >-
+      A Roblox membership subscription providing players with monthly Robux
+      allowances and access to premium content.
+    category: Monetization Concept
+
+  - term: Creator
+    definition: >-
+      A Roblox developer or studio that builds and publishes experiences
+      on the platform using the Roblox Studio tools.
+    category: Platform Actor
