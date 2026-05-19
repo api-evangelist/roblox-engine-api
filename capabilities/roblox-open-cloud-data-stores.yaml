@@ -1,0 +1,348 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Roblox Open Cloud API — Data Stores
+  description: 'Roblox Open Cloud API — Data Stores. 5 operations. Lead operation: List Data Stores. Self-contained Naftiko
+    capability covering one Roblox Engine Api business surface.'
+  tags:
+  - Roblox Engine Api
+  - Data Stores
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ROBLOX_ENGINE_API_API_KEY: ROBLOX_ENGINE_API_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: roblox-open-cloud-data-stores
+    baseUri: https://apis.roblox.com
+    description: Roblox Open Cloud API — Data Stores business capability. Self-contained, no shared references.
+    resources:
+    - name: datastores-v1-universes-universeId-standard-datastores
+      path: /datastores/v1/universes/{universeId}/standard-datastores
+      operations:
+      - name: listdatastores
+        method: GET
+        description: List Data Stores
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: universeId
+          in: path
+          type: string
+          required: true
+        - name: prefix
+          in: query
+          type: string
+          description: Filter data stores by name prefix
+        - name: limit
+          in: query
+          type: integer
+        - name: cursor
+          in: query
+          type: string
+    - name: datastores-v1-universes-universeId-standard-datastores-datastore-entries
+      path: /datastores/v1/universes/{universeId}/standard-datastores/datastore/entries
+      operations:
+      - name: listdatastoreentries
+        method: GET
+        description: List Data Store Entries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: universeId
+          in: path
+          type: string
+          required: true
+        - name: datastoreName
+          in: query
+          type: string
+          required: true
+        - name: scope
+          in: query
+          type: string
+        - name: prefix
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+        - name: cursor
+          in: query
+          type: string
+    - name: datastores-v1-universes-universeId-standard-datastores-datastore-entries-entry
+      path: /datastores/v1/universes/{universeId}/standard-datastores/datastore/entries/entry
+      operations:
+      - name: getdatastoreentry
+        method: GET
+        description: Get Data Store Entry
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: universeId
+          in: path
+          type: string
+          required: true
+        - name: datastoreName
+          in: query
+          type: string
+          required: true
+        - name: entryKey
+          in: query
+          type: string
+          required: true
+        - name: scope
+          in: query
+          type: string
+        - name: versionId
+          in: query
+          type: string
+      - name: setdatastoreentry
+        method: POST
+        description: Set Data Store Entry
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: universeId
+          in: path
+          type: string
+          required: true
+        - name: datastoreName
+          in: query
+          type: string
+          required: true
+        - name: entryKey
+          in: query
+          type: string
+          required: true
+        - name: scope
+          in: query
+          type: string
+        - name: matchVersion
+          in: query
+          type: string
+          description: Only update if current version matches
+        - name: exclusiveCreate
+          in: query
+          type: boolean
+          description: Only create if entry does not exist
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletedatastoreentry
+        method: DELETE
+        description: Delete Data Store Entry
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: universeId
+          in: path
+          type: string
+          required: true
+        - name: datastoreName
+          in: query
+          type: string
+          required: true
+        - name: entryKey
+          in: query
+          type: string
+          required: true
+        - name: scope
+          in: query
+          type: string
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.ROBLOX_ENGINE_API_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: roblox-open-cloud-data-stores-rest
+    port: 8080
+    description: REST adapter for Roblox Open Cloud API — Data Stores. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/datastores/v1/universes/{universeid}/standard-datastores
+      name: datastores-v1-universes-universeid-standard-datastores
+      description: REST surface for datastores-v1-universes-universeId-standard-datastores.
+      operations:
+      - method: GET
+        name: listdatastores
+        description: List Data Stores
+        call: roblox-open-cloud-data-stores.listdatastores
+        with:
+          universeId: rest.universeId
+          prefix: rest.prefix
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datastores/v1/universes/{universeid}/standard-datastores/datastore/entries
+      name: datastores-v1-universes-universeid-standard-datastores-datastore-entries
+      description: REST surface for datastores-v1-universes-universeId-standard-datastores-datastore-entries.
+      operations:
+      - method: GET
+        name: listdatastoreentries
+        description: List Data Store Entries
+        call: roblox-open-cloud-data-stores.listdatastoreentries
+        with:
+          universeId: rest.universeId
+          datastoreName: rest.datastoreName
+          scope: rest.scope
+          prefix: rest.prefix
+          limit: rest.limit
+          cursor: rest.cursor
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datastores/v1/universes/{universeid}/standard-datastores/datastore/entries/entry
+      name: datastores-v1-universes-universeid-standard-datastores-datastore-entries-entry
+      description: REST surface for datastores-v1-universes-universeId-standard-datastores-datastore-entries-entry.
+      operations:
+      - method: GET
+        name: getdatastoreentry
+        description: Get Data Store Entry
+        call: roblox-open-cloud-data-stores.getdatastoreentry
+        with:
+          universeId: rest.universeId
+          datastoreName: rest.datastoreName
+          entryKey: rest.entryKey
+          scope: rest.scope
+          versionId: rest.versionId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: setdatastoreentry
+        description: Set Data Store Entry
+        call: roblox-open-cloud-data-stores.setdatastoreentry
+        with:
+          universeId: rest.universeId
+          datastoreName: rest.datastoreName
+          entryKey: rest.entryKey
+          scope: rest.scope
+          matchVersion: rest.matchVersion
+          exclusiveCreate: rest.exclusiveCreate
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletedatastoreentry
+        description: Delete Data Store Entry
+        call: roblox-open-cloud-data-stores.deletedatastoreentry
+        with:
+          universeId: rest.universeId
+          datastoreName: rest.datastoreName
+          entryKey: rest.entryKey
+          scope: rest.scope
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: roblox-open-cloud-data-stores-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Roblox Open Cloud API — Data Stores. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-data-stores
+      description: List Data Stores
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: roblox-open-cloud-data-stores.listdatastores
+      with:
+        universeId: tools.universeId
+        prefix: tools.prefix
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-data-store-entries
+      description: List Data Store Entries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: roblox-open-cloud-data-stores.listdatastoreentries
+      with:
+        universeId: tools.universeId
+        datastoreName: tools.datastoreName
+        scope: tools.scope
+        prefix: tools.prefix
+        limit: tools.limit
+        cursor: tools.cursor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-data-store-entry
+      description: Get Data Store Entry
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: roblox-open-cloud-data-stores.getdatastoreentry
+      with:
+        universeId: tools.universeId
+        datastoreName: tools.datastoreName
+        entryKey: tools.entryKey
+        scope: tools.scope
+        versionId: tools.versionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: set-data-store-entry
+      description: Set Data Store Entry
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: roblox-open-cloud-data-stores.setdatastoreentry
+      with:
+        universeId: tools.universeId
+        datastoreName: tools.datastoreName
+        entryKey: tools.entryKey
+        scope: tools.scope
+        matchVersion: tools.matchVersion
+        exclusiveCreate: tools.exclusiveCreate
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-data-store-entry
+      description: Delete Data Store Entry
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: roblox-open-cloud-data-stores.deletedatastoreentry
+      with:
+        universeId: tools.universeId
+        datastoreName: tools.datastoreName
+        entryKey: tools.entryKey
+        scope: tools.scope
+      outputParameters:
+      - type: object
+        mapping: $.

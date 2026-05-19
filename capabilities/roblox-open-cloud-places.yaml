@@ -1,0 +1,194 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Roblox Open Cloud API — Places
+  description: 'Roblox Open Cloud API — Places. 3 operations. Lead operation: Get Place. Self-contained Naftiko capability
+    covering one Roblox Engine Api business surface.'
+  tags:
+  - Roblox Engine Api
+  - Places
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ROBLOX_ENGINE_API_API_KEY: ROBLOX_ENGINE_API_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: roblox-open-cloud-places
+    baseUri: https://apis.roblox.com
+    description: Roblox Open Cloud API — Places business capability. Self-contained, no shared references.
+    resources:
+    - name: cloud-v2-universes-universeId-places-placeId
+      path: /cloud/v2/universes/{universeId}/places/{placeId}
+      operations:
+      - name: getplace
+        method: GET
+        description: Get Place
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: universeId
+          in: path
+          type: string
+          required: true
+        - name: placeId
+          in: path
+          type: string
+          required: true
+      - name: updateplace
+        method: PATCH
+        description: Update Place
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: universeId
+          in: path
+          type: string
+          required: true
+        - name: placeId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: universes-v1-universeId-places-placeId-versions
+      path: /universes/v1/{universeId}/places/{placeId}/versions
+      operations:
+      - name: publishplace
+        method: POST
+        description: Publish Place
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: universeId
+          in: path
+          type: string
+          required: true
+        - name: placeId
+          in: path
+          type: string
+          required: true
+        - name: versionType
+          in: query
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.ROBLOX_ENGINE_API_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: roblox-open-cloud-places-rest
+    port: 8080
+    description: REST adapter for Roblox Open Cloud API — Places. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/cloud/v2/universes/{universeid}/places/{placeid}
+      name: cloud-v2-universes-universeid-places-placeid
+      description: REST surface for cloud-v2-universes-universeId-places-placeId.
+      operations:
+      - method: GET
+        name: getplace
+        description: Get Place
+        call: roblox-open-cloud-places.getplace
+        with:
+          universeId: rest.universeId
+          placeId: rest.placeId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateplace
+        description: Update Place
+        call: roblox-open-cloud-places.updateplace
+        with:
+          universeId: rest.universeId
+          placeId: rest.placeId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/universes/v1/{universeid}/places/{placeid}/versions
+      name: universes-v1-universeid-places-placeid-versions
+      description: REST surface for universes-v1-universeId-places-placeId-versions.
+      operations:
+      - method: POST
+        name: publishplace
+        description: Publish Place
+        call: roblox-open-cloud-places.publishplace
+        with:
+          universeId: rest.universeId
+          placeId: rest.placeId
+          versionType: rest.versionType
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: roblox-open-cloud-places-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Roblox Open Cloud API — Places. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-place
+      description: Get Place
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: roblox-open-cloud-places.getplace
+      with:
+        universeId: tools.universeId
+        placeId: tools.placeId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-place
+      description: Update Place
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: roblox-open-cloud-places.updateplace
+      with:
+        universeId: tools.universeId
+        placeId: tools.placeId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: publish-place
+      description: Publish Place
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: roblox-open-cloud-places.publishplace
+      with:
+        universeId: tools.universeId
+        placeId: tools.placeId
+        versionType: tools.versionType
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

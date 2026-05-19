@@ -1,0 +1,169 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Roblox Open Cloud API — Assets
+  description: 'Roblox Open Cloud API — Assets. 3 operations. Lead operation: Create Asset. Self-contained Naftiko capability
+    covering one Roblox Engine Api business surface.'
+  tags:
+  - Roblox Engine Api
+  - Assets
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ROBLOX_ENGINE_API_API_KEY: ROBLOX_ENGINE_API_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: roblox-open-cloud-assets
+    baseUri: https://apis.roblox.com
+    description: Roblox Open Cloud API — Assets business capability. Self-contained, no shared references.
+    resources:
+    - name: assets-v1-assets
+      path: /assets/v1/assets
+      operations:
+      - name: createasset
+        method: POST
+        description: Create Asset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: assets-v1-assets-assetId
+      path: /assets/v1/assets/{assetId}
+      operations:
+      - name: getasset
+        method: GET
+        description: Get Asset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: assetId
+          in: path
+          type: string
+          required: true
+        - name: readMask
+          in: query
+          type: string
+      - name: updateasset
+        method: PATCH
+        description: Update Asset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: assetId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.ROBLOX_ENGINE_API_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: roblox-open-cloud-assets-rest
+    port: 8080
+    description: REST adapter for Roblox Open Cloud API — Assets. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/assets/v1/assets
+      name: assets-v1-assets
+      description: REST surface for assets-v1-assets.
+      operations:
+      - method: POST
+        name: createasset
+        description: Create Asset
+        call: roblox-open-cloud-assets.createasset
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/assets/v1/assets/{assetid}
+      name: assets-v1-assets-assetid
+      description: REST surface for assets-v1-assets-assetId.
+      operations:
+      - method: GET
+        name: getasset
+        description: Get Asset
+        call: roblox-open-cloud-assets.getasset
+        with:
+          assetId: rest.assetId
+          readMask: rest.readMask
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateasset
+        description: Update Asset
+        call: roblox-open-cloud-assets.updateasset
+        with:
+          assetId: rest.assetId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: roblox-open-cloud-assets-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Roblox Open Cloud API — Assets. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: create-asset
+      description: Create Asset
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: roblox-open-cloud-assets.createasset
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-asset
+      description: Get Asset
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: roblox-open-cloud-assets.getasset
+      with:
+        assetId: tools.assetId
+        readMask: tools.readMask
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-asset
+      description: Update Asset
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: roblox-open-cloud-assets.updateasset
+      with:
+        assetId: tools.assetId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

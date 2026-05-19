@@ -1,0 +1,264 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Roblox Open Cloud API — Universes
+  description: 'Roblox Open Cloud API — Universes. 5 operations. Lead operation: Get Universe. Self-contained Naftiko capability
+    covering one Roblox Engine Api business surface.'
+  tags:
+  - Roblox Engine Api
+  - Universes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ROBLOX_ENGINE_API_API_KEY: ROBLOX_ENGINE_API_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: roblox-open-cloud-universes
+    baseUri: https://apis.roblox.com
+    description: Roblox Open Cloud API — Universes business capability. Self-contained, no shared references.
+    resources:
+    - name: cloud-v2-universes-universeId
+      path: /cloud/v2/universes/{universeId}
+      operations:
+      - name: getuniverse
+        method: GET
+        description: Get Universe
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: universeId
+          in: path
+          type: string
+          description: The universe ID
+          required: true
+      - name: updateuniverse
+        method: PATCH
+        description: Update Universe
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: universeId
+          in: path
+          type: string
+          required: true
+        - name: updateMask
+          in: query
+          type: string
+          description: Comma-separated list of fields to update
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: cloud-v2-universes-universeId-user-restrictions-userId
+      path: /cloud/v2/universes/{universeId}/user-restrictions/{userId}
+      operations:
+      - name: getuserrestriction
+        method: GET
+        description: Get User Restriction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: universeId
+          in: path
+          type: string
+          required: true
+        - name: userId
+          in: path
+          type: string
+          required: true
+      - name: updateuserrestriction
+        method: PATCH
+        description: Update User Restriction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: universeId
+          in: path
+          type: string
+          required: true
+        - name: userId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: cloud-v2-universes-universeId}:restart-servers
+      path: /cloud/v2/universes/{universeId}:restart-servers
+      operations:
+      - name: restartuniverseservers
+        method: POST
+        description: Restart Universe Servers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: universeId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.ROBLOX_ENGINE_API_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: roblox-open-cloud-universes-rest
+    port: 8080
+    description: REST adapter for Roblox Open Cloud API — Universes. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/cloud/v2/universes/{universeid}
+      name: cloud-v2-universes-universeid
+      description: REST surface for cloud-v2-universes-universeId.
+      operations:
+      - method: GET
+        name: getuniverse
+        description: Get Universe
+        call: roblox-open-cloud-universes.getuniverse
+        with:
+          universeId: rest.universeId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateuniverse
+        description: Update Universe
+        call: roblox-open-cloud-universes.updateuniverse
+        with:
+          universeId: rest.universeId
+          updateMask: rest.updateMask
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/cloud/v2/universes/{universeid}/user-restrictions/{userid}
+      name: cloud-v2-universes-universeid-user-restrictions-userid
+      description: REST surface for cloud-v2-universes-universeId-user-restrictions-userId.
+      operations:
+      - method: GET
+        name: getuserrestriction
+        description: Get User Restriction
+        call: roblox-open-cloud-universes.getuserrestriction
+        with:
+          universeId: rest.universeId
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateuserrestriction
+        description: Update User Restriction
+        call: roblox-open-cloud-universes.updateuserrestriction
+        with:
+          universeId: rest.universeId
+          userId: rest.userId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/cloud/v2/universes/universeid-restart-servers
+      name: cloud-v2-universes-universeid-restart-servers
+      description: REST surface for cloud-v2-universes-universeId}:restart-servers.
+      operations:
+      - method: POST
+        name: restartuniverseservers
+        description: Restart Universe Servers
+        call: roblox-open-cloud-universes.restartuniverseservers
+        with:
+          universeId: rest.universeId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: roblox-open-cloud-universes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Roblox Open Cloud API — Universes. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-universe
+      description: Get Universe
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: roblox-open-cloud-universes.getuniverse
+      with:
+        universeId: tools.universeId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-universe
+      description: Update Universe
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: roblox-open-cloud-universes.updateuniverse
+      with:
+        universeId: tools.universeId
+        updateMask: tools.updateMask
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-user-restriction
+      description: Get User Restriction
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: roblox-open-cloud-universes.getuserrestriction
+      with:
+        universeId: tools.universeId
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-user-restriction
+      description: Update User Restriction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: roblox-open-cloud-universes.updateuserrestriction
+      with:
+        universeId: tools.universeId
+        userId: tools.userId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: restart-universe-servers
+      description: Restart Universe Servers
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: roblox-open-cloud-universes.restartuniverseservers
+      with:
+        universeId: tools.universeId
+      outputParameters:
+      - type: object
+        mapping: $.

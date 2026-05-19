@@ -1,0 +1,133 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Roblox Open Cloud API — Users
+  description: 'Roblox Open Cloud API — Users. 2 operations. Lead operation: List Users. Self-contained Naftiko capability
+    covering one Roblox Engine Api business surface.'
+  tags:
+  - Roblox Engine Api
+  - Users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ROBLOX_ENGINE_API_API_KEY: ROBLOX_ENGINE_API_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: roblox-open-cloud-users
+    baseUri: https://apis.roblox.com
+    description: Roblox Open Cloud API — Users business capability. Self-contained, no shared references.
+    resources:
+    - name: cloud-v2-users
+      path: /cloud/v2/users
+      operations:
+      - name: listusers
+        method: GET
+        description: List Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter
+          in: query
+          type: string
+          description: Filter expression for users
+        - name: maxPageSize
+          in: query
+          type: integer
+        - name: pageToken
+          in: query
+          type: string
+    - name: cloud-v2-users-userId
+      path: /cloud/v2/users/{userId}
+      operations:
+      - name: getuser
+        method: GET
+        description: Get User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          description: The Roblox user ID
+          required: true
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.ROBLOX_ENGINE_API_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: roblox-open-cloud-users-rest
+    port: 8080
+    description: REST adapter for Roblox Open Cloud API — Users. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/cloud/v2/users
+      name: cloud-v2-users
+      description: REST surface for cloud-v2-users.
+      operations:
+      - method: GET
+        name: listusers
+        description: List Users
+        call: roblox-open-cloud-users.listusers
+        with:
+          filter: rest.filter
+          maxPageSize: rest.maxPageSize
+          pageToken: rest.pageToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/cloud/v2/users/{userid}
+      name: cloud-v2-users-userid
+      description: REST surface for cloud-v2-users-userId.
+      operations:
+      - method: GET
+        name: getuser
+        description: Get User
+        call: roblox-open-cloud-users.getuser
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: roblox-open-cloud-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Roblox Open Cloud API — Users. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-users
+      description: List Users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: roblox-open-cloud-users.listusers
+      with:
+        filter: tools.filter
+        maxPageSize: tools.maxPageSize
+        pageToken: tools.pageToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-user
+      description: Get User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: roblox-open-cloud-users.getuser
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
