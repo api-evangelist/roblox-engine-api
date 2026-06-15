@@ -1,0 +1,770 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roblox Open Cloud API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Universes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Universe",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.roblox.com/cloud/v2/universes/:universeId",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path",
+                "description": "The universe ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve details about a Roblox experience (universe) by its ID."
+        },
+        {
+          "info": {
+            "name": "Update Universe",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.roblox.com/cloud/v2/universes/:universeId",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "updateMask",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update settings for a Roblox experience (universe)."
+        },
+        {
+          "info": {
+            "name": "Restart Universe Servers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.roblox.com/cloud/v2/universes/:universeId:restart-servers",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Restart all active game servers for a universe."
+        },
+        {
+          "info": {
+            "name": "Get User Restriction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.roblox.com/cloud/v2/universes/:universeId/user-restrictions/:userId",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Check if a user is restricted from a universe."
+        },
+        {
+          "info": {
+            "name": "Update User Restriction",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.roblox.com/cloud/v2/universes/:universeId/user-restrictions/:userId",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Ban or unban a user from a universe."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Places",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Place",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.roblox.com/cloud/v2/universes/:universeId/places/:placeId",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "placeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve details about a specific place within a universe."
+        },
+        {
+          "info": {
+            "name": "Update Place",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.roblox.com/cloud/v2/universes/:universeId/places/:placeId",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "placeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update settings for a place."
+        },
+        {
+          "info": {
+            "name": "Publish Place",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.roblox.com/universes/v1/:universeId/places/:placeId/versions",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "placeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "versionType",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Publish a new version of a place by uploading a .rbxl or .rbxlx file. This deploys the new place version to production."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Data Stores",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Data Stores",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.roblox.com/datastores/v1/universes/:universeId/standard-datastores",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "query",
+                "description": "Filter data stores by name prefix"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all data stores in a universe."
+        },
+        {
+          "info": {
+            "name": "List Data Store Entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.roblox.com/datastores/v1/universes/:universeId/standard-datastores/datastore/entries",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "datastoreName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all entries (keys) in a data store."
+        },
+        {
+          "info": {
+            "name": "Get Data Store Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.roblox.com/datastores/v1/universes/:universeId/standard-datastores/datastore/entries/entry",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "datastoreName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "entryKey",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "versionId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve the value and metadata for a specific data store entry."
+        },
+        {
+          "info": {
+            "name": "Set Data Store Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.roblox.com/datastores/v1/universes/:universeId/standard-datastores/datastore/entries/entry",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "datastoreName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "entryKey",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "matchVersion",
+                "value": "",
+                "type": "query",
+                "description": "Only update if current version matches"
+              },
+              {
+                "name": "exclusiveCreate",
+                "value": "",
+                "type": "query",
+                "description": "Only create if entry does not exist"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Set or update the value of a data store entry."
+        },
+        {
+          "info": {
+            "name": "Delete Data Store Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apis.roblox.com/datastores/v1/universes/:universeId/standard-datastores/datastore/entries/entry",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "datastoreName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "entryKey",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Remove an entry from a data store."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Messaging",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Publish Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.roblox.com/messaging-service/v1/universes/:universeId/topics/:topic",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "topic",
+                "value": "",
+                "type": "path",
+                "description": "The message topic name (max 80 characters)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Publish a message to a topic in the messaging service. Messages are delivered to all servers in the universe subscribed to the topic."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.roblox.com/cloud/v2/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The Roblox user ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve information about a Roblox user by their user ID."
+        },
+        {
+          "info": {
+            "name": "List Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.roblox.com/cloud/v2/users",
+            "params": [
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter expression for users"
+              },
+              {
+                "name": "maxPageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List users by filter criteria."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.roblox.com/cloud/v2/groups/:groupId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The group ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve information about a Roblox group by its ID."
+        },
+        {
+          "info": {
+            "name": "List Group Memberships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.roblox.com/cloud/v2/groups/:groupId/memberships",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "maxPageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List members and their roles in a group."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.roblox.com/assets/v1/assets",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Upload and create a new asset on Roblox."
+        },
+        {
+          "info": {
+            "name": "Get Asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.roblox.com/assets/v1/assets/:assetId",
+            "params": [
+              {
+                "name": "assetId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "readMask",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve details for a specific asset by ID."
+        },
+        {
+          "info": {
+            "name": "Update Asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.roblox.com/assets/v1/assets/:assetId",
+            "params": [
+              {
+                "name": "assetId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update metadata for an existing asset."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

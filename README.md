@@ -1,105 +1,90 @@
-# Roblox Engine API
+# Roblox Engine API (roblox-engine-api)
 
-Roblox provides a suite of developer APIs for building experiences on the Roblox platform. The Engine API documents all classes, data types, enumerations, functions, events, callbacks, and properties for in-experience scripting in Luau. The Open Cloud REST API provides external programmatic access to Roblox platform resources including experiences, places, data stores, users, groups, assets, messaging, and more. In March 2026, Roblox launched new unified Open Cloud reference documentation.
+Roblox provides a suite of developer APIs for building experiences on the Roblox platform. The Engine API documents all classes, data types, enumerations, functions, events, callbacks, and properties for in-experience scripting in Luau. The Open Cloud REST API provides external programmatic access to Roblox platform resources including experiences, places, data stores, users, groups, assets, messaging, and more. In March 2026 Roblox launched new unified Open Cloud reference documentation.
 
-**Website:** [https://www.roblox.com](https://www.roblox.com)
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/roblox-engine-api/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/roblox-engine-api/refs/heads/main/apis.yml)
 
-**Developer Portal:** [https://create.roblox.com](https://create.roblox.com)
+## Scope
 
-**Developer Forum:** [https://devforum.roblox.com](https://devforum.roblox.com)
+- **Type:** Index
+
+## Tags
+
+- Gaming
+- Game Development
+- Metaverse
+- Roblox
+- Open Cloud
+
+## Timestamps
+
+- **Created:** 2024-11-07
+- **Modified:** 2026-05-19
 
 ## APIs
 
 ### Roblox Engine API
 
-The Roblox Engine API documents all classes, data types, enumerations, global functions, variables, and libraries available when scripting Roblox experiences in Luau.
+The Roblox Engine API documents all classes, data types, enumerations, global functions, variables, and libraries available when scripting Roblox experiences in Luau. This is the primary reference for in-engine development covering services, instances, and platform behaviors.
 
-- **Documentation:** [https://create.roblox.com/docs/reference/engine](https://create.roblox.com/docs/reference/engine)
+- **Human URL:** [https://create.roblox.com/docs/reference/engine](https://create.roblox.com/docs/reference/engine)
+
+#### Tags
+
+- Gaming
+- Luau
+- Scripting
+- Engine
+
+#### Properties
+
+- [Documentation](https://create.roblox.com/docs/reference/engine)
+- [Postman Collection](collections/roblox-open-cloud.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/roblox-open-cloud.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### Roblox Open Cloud API
 
-The Roblox Open Cloud API is a REST API providing external programmatic access to Roblox platform resources. Authentication uses API keys scoped to specific resources via the `x-api-key` header.
+The Roblox Open Cloud API is a REST API providing external programmatic access to Roblox platform resources. It supports experiences (universes), places, data stores, memory stores, users, groups, assets, messaging, badges, game passes, and subscriptions. Authentication uses API keys scoped to specific resources. The API is organized into Open Cloud v2, v1, and Legacy tiers.
 
+- **Human URL:** [https://create.roblox.com/docs/cloud/reference](https://create.roblox.com/docs/cloud/reference)
 - **Base URL:** `https://apis.roblox.com`
-- **Authentication:** API Key (`x-api-key` header)
-- **Documentation:** [https://create.roblox.com/docs/cloud/reference](https://create.roblox.com/docs/cloud/reference)
-- **OpenAPI Spec:** [https://create.roblox.com/docs/cloud/reference/openapi](https://create.roblox.com/docs/cloud/reference/openapi)
 
-#### Key Endpoints
+#### Tags
 
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/cloud/v2/universes/{universeId}` | Get experience details |
-| PATCH | `/cloud/v2/universes/{universeId}` | Update experience settings |
-| POST | `/cloud/v2/universes/{universeId}:restart-servers` | Restart all game servers |
-| GET | `/cloud/v2/universes/{universeId}/places/{placeId}` | Get place details |
-| POST | `/universes/v1/{universeId}/places/{placeId}/versions` | Publish a place |
-| GET | `/datastores/v1/universes/{universeId}/standard-datastores` | List data stores |
-| POST | `/datastores/v1/universes/.../entries/entry` | Set data store entry |
-| POST | `/messaging-service/v1/universes/{universeId}/topics/{topic}` | Publish message |
-| GET | `/cloud/v2/users/{userId}` | Get user information |
-| GET | `/cloud/v2/groups/{groupId}` | Get group information |
-| PATCH | `/cloud/v2/universes/{universeId}/user-restrictions/{userId}` | Ban/unban player |
+- Gaming
+- Open Cloud
+- REST API
+- Data Stores
+- Experiences
+- Users
+- Groups
 
-## Artifacts
+#### Properties
 
-### OpenAPI Specifications
+- [Documentation](https://create.roblox.com/docs/cloud/reference)
+- [OpenAPI](https://create.roblox.com/docs/cloud/reference/openapi) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/roblox-engine-api/refs/heads/main/openapi/roblox-open-cloud-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/roblox-engine-api/refs/heads/main/rules/roblox-open-cloud-rules.yml)
+- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/roblox-engine-api/refs/heads/main/json-schema/roblox-universe-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/roblox-engine-api/refs/heads/main/json-schema/roblox-user-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [Postman Collection](collections/roblox-open-cloud.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/roblox-open-cloud.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-| Spec | Description |
-|------|-------------|
-| [openapi/roblox-open-cloud-openapi.yml](openapi/roblox-open-cloud-openapi.yml) | Roblox Open Cloud API — universes, places, data stores, messaging, users, groups |
+## Common Properties
 
-### Spectral Rules
-
-| Ruleset | Description |
-|---------|-------------|
-| [rules/roblox-open-cloud-rules.yml](rules/roblox-open-cloud-rules.yml) | Roblox Open Cloud linting rules enforcing x-api-key auth and camelCase conventions |
-
-### Capabilities
-
-| Capability | Description |
-|------------|-------------|
-| [capabilities/experience-management.yaml](capabilities/experience-management.yaml) | Unified workflow for Roblox experience management including moderation and data stores |
-| [capabilities/shared/open-cloud.yaml](capabilities/shared/open-cloud.yaml) | Shared Open Cloud API consumed definition |
-
-### JSON Schemas
-
-| Schema | Description |
-|--------|-------------|
-| [json-schema/roblox-universe-schema.json](json-schema/roblox-universe-schema.json) | Roblox universe (experience) resource |
-| [json-schema/roblox-user-schema.json](json-schema/roblox-user-schema.json) | Roblox user resource from Open Cloud |
-
-### JSON Structure
-
-| Structure | Description |
-|-----------|-------------|
-| [json-structure/roblox-universe-structure.json](json-structure/roblox-universe-structure.json) | Field documentation for the universe object |
-
-### JSON-LD Context
-
-| Context | Description |
-|---------|-------------|
-| [json-ld/roblox-engine-api-context.jsonld](json-ld/roblox-engine-api-context.jsonld) | Linked data context mapping Roblox platform terms to schema.org |
-
-### Examples
-
-| Example | Description |
-|---------|-------------|
-| [examples/roblox-get-universe-example.json](examples/roblox-get-universe-example.json) | Get universe details with request/response |
-| [examples/roblox-set-datastore-entry-example.json](examples/roblox-set-datastore-entry-example.json) | Set a data store entry with player data |
-
-### Vocabulary
-
-| Vocabulary | Description |
-|------------|-------------|
-| [vocabulary/roblox-engine-api-vocabulary.yml](vocabulary/roblox-engine-api-vocabulary.yml) | Roblox platform terms including Universe, DataStore, Luau, OpenCloud, UserRestriction |
-
-## Tags
-
-Gaming, Game Development, Metaverse, Roblox, Open Cloud
+- [LinkedIn](https://www.linkedin.com/company/roblox)
+- [Website](https://www.roblox.com)
+- [Developer Portal](https://create.roblox.com)
+- [Documentation](https://create.roblox.com/docs)
+- [Dev Forum](https://devforum.roblox.com)
+- [Git Hub](https://github.com/Roblox)
+- [Blog](https://blog.roblox.com)
+- [Privacy Policy](https://www.roblox.com/info/privacy)
+- [Terms of Service](https://en.help.roblox.com/hc/en-us/articles/115004647846)
+- [J S O N L D Context](https://raw.githubusercontent.com/api-evangelist/roblox-engine-api/refs/heads/main/json-ld/roblox-engine-api-context.jsonld)
+- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/roblox-engine-api/refs/heads/main/vocabulary/roblox-engine-api-vocabulary.yml)
 
 ## Maintainers
 
 **FN:** Kin Lane
-
 **Email:** kin@apievangelist.com
