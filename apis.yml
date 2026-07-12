@@ -96,6 +96,12 @@ apis:
       - Creator Tooling
       - Developer Platform
 common:
+  - type: VulnerabilityDisclosure
+    url: security/roblox-engine-api-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/roblox-engine-api-domain-security.yml
+  - type: Authentication
+    url: authentication/roblox-engine-api-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/roblox
   - type: Website
