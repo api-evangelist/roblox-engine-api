@@ -96,6 +96,8 @@ apis:
       - Creator Tooling
       - Developer Platform
 common:
+  - type: AgenticAccess
+    url: agentic-access/roblox-engine-api-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/roblox-engine-api-vulnerability-disclosure.yml
   - type: DomainSecurity
