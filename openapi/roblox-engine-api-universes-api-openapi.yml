@@ -1,0 +1,260 @@
+openapi: 3.0.3
+info:
+  title: Roblox Open Cloud Assets Universes API
+  description: The Roblox Open Cloud API provides external programmatic access to Roblox platform resources. It enables server-side operations on experiences, places, data stores, memory stores, users, groups, assets, messaging, badges, game passes, and subscriptions. Authentication uses API keys scoped to specific resources. The API is organized into Open Cloud v2, v1, and Legacy tiers with consistent RESTful patterns.
+  version: v2
+  contact:
+    name: Roblox Developer Relations
+    url: https://devforum.roblox.com
+  termsOfService: https://en.help.roblox.com/hc/en-us/articles/115004647846
+  license:
+    name: Proprietary
+servers:
+- url: https://apis.roblox.com
+  description: Roblox Open Cloud API
+tags:
+- name: Universes
+  description: Experience (universe) management
+paths:
+  /cloud/v2/universes/{universeId}:
+    get:
+      operationId: getUniverse
+      summary: Get Universe
+      description: Retrieve details about a Roblox experience (universe) by its ID.
+      tags:
+      - Universes
+      security:
+      - ApiKeyAuth: []
+      parameters:
+      - name: universeId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The universe ID
+      responses:
+        '200':
+          description: Universe details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Universe'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateUniverse
+      summary: Update Universe
+      description: Update settings for a Roblox experience (universe).
+      tags:
+      - Universes
+      security:
+      - ApiKeyAuth: []
+      parameters:
+      - name: universeId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: updateMask
+        in: query
+        schema:
+          type: string
+        description: Comma-separated list of fields to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUniverseRequest'
+      responses:
+        '200':
+          description: Universe updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Universe'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /cloud/v2/universes/{universeId}:restart-servers:
+    post:
+      operationId: restartUniverseServers
+      summary: Restart Universe Servers
+      description: Restart all active game servers for a universe.
+      tags:
+      - Universes
+      security:
+      - ApiKeyAuth: []
+      parameters:
+      - name: universeId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Server restart initiated
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /cloud/v2/universes/{universeId}/user-restrictions/{userId}:
+    get:
+      operationId: getUserRestriction
+      summary: Get User Restriction
+      description: Check if a user is restricted from a universe.
+      tags:
+      - Universes
+      security:
+      - ApiKeyAuth: []
+      parameters:
+      - name: universeId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: User restriction details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRestriction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    patch:
+      operationId: updateUserRestriction
+      summary: Update User Restriction
+      description: Ban or unban a user from a universe.
+      tags:
+      - Universes
+      security:
+      - ApiKeyAuth: []
+      parameters:
+      - name: universeId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRestriction'
+      responses:
+        '200':
+          description: User restriction updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRestriction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    UserRestriction:
+      type: object
+      properties:
+        active:
+          type: boolean
+        startTime:
+          type: string
+          format: date-time
+        duration:
+          type: string
+          description: Duration in ISO 8601 duration format
+        privateReason:
+          type: string
+        displayReason:
+          type: string
+        excludeAltAccounts:
+          type: boolean
+        inherited:
+          type: boolean
+    UpdateUniverseRequest:
+      type: object
+      properties:
+        displayName:
+          type: string
+        description:
+          type: string
+        visibility:
+          type: string
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: object
+    Universe:
+      type: object
+      properties:
+        id:
+          type: string
+        displayName:
+          type: string
+        description:
+          type: string
+        visibility:
+          type: string
+          enum:
+          - public
+          - private
+        socialLinks:
+          type: array
+          items:
+            type: object
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+  responses:
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Insufficient permissions for this resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Roblox Open Cloud API key scoped to specific resources

@@ -1,0 +1,323 @@
+openapi: 3.0.3
+info:
+  title: Roblox Open Cloud Assets Data Stores API
+  description: The Roblox Open Cloud API provides external programmatic access to Roblox platform resources. It enables server-side operations on experiences, places, data stores, memory stores, users, groups, assets, messaging, badges, game passes, and subscriptions. Authentication uses API keys scoped to specific resources. The API is organized into Open Cloud v2, v1, and Legacy tiers with consistent RESTful patterns.
+  version: v2
+  contact:
+    name: Roblox Developer Relations
+    url: https://devforum.roblox.com
+  termsOfService: https://en.help.roblox.com/hc/en-us/articles/115004647846
+  license:
+    name: Proprietary
+servers:
+- url: https://apis.roblox.com
+  description: Roblox Open Cloud API
+tags:
+- name: Data Stores
+  description: Persistent data storage for experiences
+paths:
+  /datastores/v1/universes/{universeId}/standard-datastores:
+    get:
+      operationId: listDataStores
+      summary: List Data Stores
+      description: List all data stores in a universe.
+      tags:
+      - Data Stores
+      security:
+      - ApiKeyAuth: []
+      parameters:
+      - name: universeId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: prefix
+        in: query
+        schema:
+          type: string
+        description: Filter data stores by name prefix
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          maximum: 100
+      - name: cursor
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of data stores
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataStoreList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /datastores/v1/universes/{universeId}/standard-datastores/datastore/entries:
+    get:
+      operationId: listDataStoreEntries
+      summary: List Data Store Entries
+      description: List all entries (keys) in a data store.
+      tags:
+      - Data Stores
+      security:
+      - ApiKeyAuth: []
+      parameters:
+      - name: universeId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: datastoreName
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        schema:
+          type: string
+          default: global
+      - name: prefix
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: cursor
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of data store entry keys
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataStoreEntryList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /datastores/v1/universes/{universeId}/standard-datastores/datastore/entries/entry:
+    get:
+      operationId: getDataStoreEntry
+      summary: Get Data Store Entry
+      description: Retrieve the value and metadata for a specific data store entry.
+      tags:
+      - Data Stores
+      security:
+      - ApiKeyAuth: []
+      parameters:
+      - name: universeId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: datastoreName
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: entryKey
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        schema:
+          type: string
+          default: global
+      - name: versionId
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Data store entry value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataStoreEntry'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: setDataStoreEntry
+      summary: Set Data Store Entry
+      description: Set or update the value of a data store entry.
+      tags:
+      - Data Stores
+      security:
+      - ApiKeyAuth: []
+      parameters:
+      - name: universeId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: datastoreName
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: entryKey
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        schema:
+          type: string
+          default: global
+      - name: matchVersion
+        in: query
+        schema:
+          type: string
+        description: Only update if current version matches
+      - name: exclusiveCreate
+        in: query
+        schema:
+          type: boolean
+        description: Only create if entry does not exist
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Entry set successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataStoreEntryMetadata'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      operationId: deleteDataStoreEntry
+      summary: Delete Data Store Entry
+      description: Remove an entry from a data store.
+      tags:
+      - Data Stores
+      security:
+      - ApiKeyAuth: []
+      parameters:
+      - name: universeId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: datastoreName
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: entryKey
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Entry deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    DataStoreEntryList:
+      type: object
+      properties:
+        keys:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+        nextPageCursor:
+          type: string
+    DataStoreList:
+      type: object
+      properties:
+        datastores:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              createdTime:
+                type: string
+                format: date-time
+        nextPageCursor:
+          type: string
+    DataStoreEntry:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties: true
+        version:
+          type: string
+        attributes:
+          type: object
+        userIds:
+          type: array
+          items:
+            type: integer
+    DataStoreEntryMetadata:
+      type: object
+      properties:
+        version:
+          type: string
+        deleted:
+          type: boolean
+        contentLength:
+          type: integer
+        createdTime:
+          type: string
+          format: date-time
+        objectCreatedTime:
+          type: string
+          format: date-time
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: object
+  responses:
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Roblox Open Cloud API key scoped to specific resources

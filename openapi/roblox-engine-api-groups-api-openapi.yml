@@ -1,0 +1,182 @@
+openapi: 3.0.3
+info:
+  title: Roblox Open Cloud Assets Groups API
+  description: The Roblox Open Cloud API provides external programmatic access to Roblox platform resources. It enables server-side operations on experiences, places, data stores, memory stores, users, groups, assets, messaging, badges, game passes, and subscriptions. Authentication uses API keys scoped to specific resources. The API is organized into Open Cloud v2, v1, and Legacy tiers with consistent RESTful patterns.
+  version: v2
+  contact:
+    name: Roblox Developer Relations
+    url: https://devforum.roblox.com
+  termsOfService: https://en.help.roblox.com/hc/en-us/articles/115004647846
+  license:
+    name: Proprietary
+servers:
+- url: https://apis.roblox.com
+  description: Roblox Open Cloud API
+tags:
+- name: Groups
+  description: Roblox group management
+paths:
+  /cloud/v2/groups/{groupId}:
+    get:
+      operationId: getGroup
+      summary: Get Group
+      description: Retrieve information about a Roblox group by its ID.
+      tags:
+      - Groups
+      security:
+      - ApiKeyAuth: []
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The group ID
+      responses:
+        '200':
+          description: Group information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /cloud/v2/groups/{groupId}/memberships:
+    get:
+      operationId: listGroupMemberships
+      summary: List Group Memberships
+      description: List members and their roles in a group.
+      tags:
+      - Groups
+      security:
+      - ApiKeyAuth: []
+      parameters:
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: maxPageSize
+        in: query
+        schema:
+          type: integer
+      - name: pageToken
+        in: query
+        schema:
+          type: string
+      - name: filter
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of group memberships
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupMembershipList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        path:
+          type: string
+        createTime:
+          type: string
+          format: date-time
+        id:
+          type: string
+        name:
+          type: string
+        displayName:
+          type: string
+        about:
+          type: string
+        locale:
+          type: string
+        premium:
+          type: boolean
+        idVerified:
+          type: boolean
+        socialNetworkProfiles:
+          type: object
+    GroupMembership:
+      type: object
+      properties:
+        path:
+          type: string
+        user:
+          type: string
+        role:
+          type: string
+    Group:
+      type: object
+      properties:
+        id:
+          type: string
+        displayName:
+          type: string
+        description:
+          type: string
+        owner:
+          $ref: '#/components/schemas/User'
+        memberCount:
+          type: integer
+        publicEntryAllowed:
+          type: boolean
+        locked:
+          type: boolean
+        verified:
+          type: boolean
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: object
+    GroupMembershipList:
+      type: object
+      properties:
+        groupMemberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupMembership'
+        nextPageToken:
+          type: string
+  responses:
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Roblox Open Cloud API key scoped to specific resources

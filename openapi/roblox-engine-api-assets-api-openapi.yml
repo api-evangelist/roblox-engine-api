@@ -1,0 +1,180 @@
+openapi: 3.0.3
+info:
+  title: Roblox Open Cloud Assets API
+  description: The Roblox Open Cloud API provides external programmatic access to Roblox platform resources. It enables server-side operations on experiences, places, data stores, memory stores, users, groups, assets, messaging, badges, game passes, and subscriptions. Authentication uses API keys scoped to specific resources. The API is organized into Open Cloud v2, v1, and Legacy tiers with consistent RESTful patterns.
+  version: v2
+  contact:
+    name: Roblox Developer Relations
+    url: https://devforum.roblox.com
+  termsOfService: https://en.help.roblox.com/hc/en-us/articles/115004647846
+  license:
+    name: Proprietary
+servers:
+- url: https://apis.roblox.com
+  description: Roblox Open Cloud API
+tags:
+- name: Assets
+  description: Asset management and operations
+paths:
+  /assets/v1/assets:
+    post:
+      operationId: createAsset
+      summary: Create Asset
+      description: Upload and create a new asset on Roblox.
+      tags:
+      - Assets
+      security:
+      - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateAssetRequest'
+      responses:
+        '200':
+          description: Asset creation operation initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /assets/v1/assets/{assetId}:
+    get:
+      operationId: getAsset
+      summary: Get Asset
+      description: Retrieve details for a specific asset by ID.
+      tags:
+      - Assets
+      security:
+      - ApiKeyAuth: []
+      parameters:
+      - name: assetId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: readMask
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Asset details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateAsset
+      summary: Update Asset
+      description: Update metadata for an existing asset.
+      tags:
+      - Assets
+      security:
+      - ApiKeyAuth: []
+      parameters:
+      - name: assetId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UpdateAssetRequest'
+      responses:
+        '200':
+          description: Asset update operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    Operation:
+      type: object
+      properties:
+        path:
+          type: string
+        done:
+          type: boolean
+        response:
+          type: object
+    UpdateAssetRequest:
+      type: object
+      properties:
+        request:
+          type: string
+          description: JSON-encoded update metadata
+        fileContent:
+          type: string
+          format: binary
+    Asset:
+      type: object
+      properties:
+        assetId:
+          type: string
+        assetType:
+          type: string
+        displayName:
+          type: string
+        description:
+          type: string
+        creationContext:
+          type: object
+        moderationResult:
+          type: object
+        state:
+          type: string
+    CreateAssetRequest:
+      type: object
+      required:
+      - request
+      - fileContent
+      properties:
+        request:
+          type: string
+          description: JSON-encoded asset metadata
+        fileContent:
+          type: string
+          format: binary
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: object
+  responses:
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Roblox Open Cloud API key scoped to specific resources
