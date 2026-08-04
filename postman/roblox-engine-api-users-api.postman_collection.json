@@ -1,0 +1,454 @@
+{
+  "info": {
+    "_postman_id": "3c201ca7-2aa2-47bd-be04-323b50fd3a6c",
+    "name": "Roblox Open Cloud Assets Users API",
+    "description": "The Roblox Open Cloud API provides external programmatic access to Roblox platform resources. It enables server-side operations on experiences, places, data stores, memory stores, users, groups, assets, messaging, badges, game passes, and subscriptions. Authentication uses API keys scoped to specific resources. The API is organized into Open Cloud v2, v1, and Legacy tiers with consistent RESTful patterns.\n\nContact Support:\n Name: Roblox Developer Relations",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:48:52.000Z",
+    "updatedAt": "2026-07-28T02:48:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3c201ca7-2aa2-47bd-be04-323b50fd3a6c"
+  },
+  "item": [
+    {
+      "name": "cloud",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "users",
+              "item": [
+                {
+                  "name": "{userId}",
+                  "item": [
+                    {
+                      "name": "Get User",
+                      "id": "7797e3a5-4762-4a4d-a928-077a290661c7",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/cloud/v2/users/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cloud",
+                            "v2",
+                            "users",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "cebaaec6-6e7f-4aab-a71b-20589548171a",
+                              "key": "userId",
+                              "value": "<string>",
+                              "description": "(Required) The Roblox user ID"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve information about a Roblox user by their user ID."
+                      },
+                      "response": [
+                        {
+                          "id": "51ec35a6-d00f-4a5f-8d65-dc7725429d47",
+                          "name": "User information",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/cloud/v2/users/:userId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "cloud",
+                                "v2",
+                                "users",
+                                ":userId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"path\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"about\": \"<string>\",\n  \"locale\": \"<string>\",\n  \"premium\": \"<boolean>\",\n  \"idVerified\": \"<boolean>\",\n  \"socialNetworkProfiles\": {}\n}",
+                          "createdAt": "2026-07-28T02:48:53.000Z",
+                          "updatedAt": "2026-07-28T02:48:53.000Z",
+                          "uid": "35240-51ec35a6-d00f-4a5f-8d65-dc7725429d47"
+                        },
+                        {
+                          "id": "a225ca92-6c8e-44bb-a1bb-9f5fad9e8127",
+                          "name": "Authentication failed",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/cloud/v2/users/:userId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "cloud",
+                                "v2",
+                                "users",
+                                ":userId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:48:53.000Z",
+                          "updatedAt": "2026-07-28T02:48:53.000Z",
+                          "uid": "35240-a225ca92-6c8e-44bb-a1bb-9f5fad9e8127"
+                        },
+                        {
+                          "id": "8c136cb8-3d54-424b-ae84-a27fab2c479d",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/cloud/v2/users/:userId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "cloud",
+                                "v2",
+                                "users",
+                                ":userId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:48:53.000Z",
+                          "updatedAt": "2026-07-28T02:48:53.000Z",
+                          "uid": "35240-8c136cb8-3d54-424b-ae84-a27fab2c479d"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:48:53.000Z",
+                      "updatedAt": "2026-07-28T02:48:53.000Z",
+                      "uid": "35240-7797e3a5-4762-4a4d-a928-077a290661c7"
+                    }
+                  ],
+                  "id": "0bb41e2c-2daf-4dc1-b233-7c6d5edc5e71",
+                  "createdAt": "2026-07-28T02:48:53.000Z",
+                  "updatedAt": "2026-07-28T02:48:53.000Z",
+                  "uid": "35240-0bb41e2c-2daf-4dc1-b233-7c6d5edc5e71"
+                },
+                {
+                  "name": "List Users",
+                  "id": "f6710ce9-9d79-4aab-937d-73af0df0246a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cloud/v2/users?filter=<string>&maxPageSize=<integer>&pageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cloud",
+                        "v2",
+                        "users"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter expression for users",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "maxPageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "pageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "List users by filter criteria."
+                  },
+                  "response": [
+                    {
+                      "id": "fc07fdc7-93c2-407c-80fa-ffc79e6a7723",
+                      "name": "List of users",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/cloud/v2/users?filter=<string>&maxPageSize=<integer>&pageToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cloud",
+                            "v2",
+                            "users"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter expression for users",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "maxPageSize",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "pageToken",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"users\": [\n    {\n      \"path\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"about\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"premium\": \"<boolean>\",\n      \"idVerified\": \"<boolean>\",\n      \"socialNetworkProfiles\": {}\n    },\n    {\n      \"path\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"about\": \"<string>\",\n      \"locale\": \"<string>\",\n      \"premium\": \"<boolean>\",\n      \"idVerified\": \"<boolean>\",\n      \"socialNetworkProfiles\": {}\n    }\n  ],\n  \"nextPageToken\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:48:53.000Z",
+                      "updatedAt": "2026-07-28T02:48:53.000Z",
+                      "uid": "35240-fc07fdc7-93c2-407c-80fa-ffc79e6a7723"
+                    },
+                    {
+                      "id": "c59ca172-593d-4782-9b66-521df19829e7",
+                      "name": "Authentication failed",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/cloud/v2/users?filter=<string>&maxPageSize=<integer>&pageToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cloud",
+                            "v2",
+                            "users"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter expression for users",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "maxPageSize",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "pageToken",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:48:53.000Z",
+                      "updatedAt": "2026-07-28T02:48:53.000Z",
+                      "uid": "35240-c59ca172-593d-4782-9b66-521df19829e7"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:48:53.000Z",
+                  "updatedAt": "2026-07-28T02:48:53.000Z",
+                  "uid": "35240-f6710ce9-9d79-4aab-937d-73af0df0246a"
+                }
+              ],
+              "id": "0c27d583-5f00-4fdc-ab22-668614b296db",
+              "createdAt": "2026-07-28T02:48:53.000Z",
+              "updatedAt": "2026-07-28T02:48:53.000Z",
+              "uid": "35240-0c27d583-5f00-4fdc-ab22-668614b296db"
+            }
+          ],
+          "id": "6366db7c-3f78-419d-978b-0acb80e03efd",
+          "createdAt": "2026-07-28T02:48:53.000Z",
+          "updatedAt": "2026-07-28T02:48:53.000Z",
+          "uid": "35240-6366db7c-3f78-419d-978b-0acb80e03efd"
+        }
+      ],
+      "id": "1b58a753-1859-43d3-bc5b-eb510aaeaf5e",
+      "createdAt": "2026-07-28T02:48:53.000Z",
+      "updatedAt": "2026-07-28T02:48:53.000Z",
+      "uid": "35240-1b58a753-1859-43d3-bc5b-eb510aaeaf5e"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://apis.roblox.com"
+    }
+  ]
+}

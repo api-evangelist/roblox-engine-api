@@ -1,0 +1,549 @@
+{
+  "info": {
+    "_postman_id": "5dc3b00b-fd0f-42d4-8beb-7c713e1df788",
+    "name": "Roblox Open Cloud Assets Groups API",
+    "description": "The Roblox Open Cloud API provides external programmatic access to Roblox platform resources. It enables server-side operations on experiences, places, data stores, memory stores, users, groups, assets, messaging, badges, game passes, and subscriptions. Authentication uses API keys scoped to specific resources. The API is organized into Open Cloud v2, v1, and Legacy tiers with consistent RESTful patterns.\n\nContact Support:\n Name: Roblox Developer Relations",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:48:42.000Z",
+    "updatedAt": "2026-07-28T02:48:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5dc3b00b-fd0f-42d4-8beb-7c713e1df788"
+  },
+  "item": [
+    {
+      "name": "cloud",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "groups",
+              "item": [
+                {
+                  "name": "{groupId}",
+                  "item": [
+                    {
+                      "name": "memberships",
+                      "item": [
+                        {
+                          "name": "List Group Memberships",
+                          "id": "b39838dd-5bde-40a6-ad62-10702b11a0a4",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "x-api-key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/cloud/v2/groups/:groupId/memberships?maxPageSize=<integer>&pageToken=<string>&filter=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "cloud",
+                                "v2",
+                                "groups",
+                                ":groupId",
+                                "memberships"
+                              ],
+                              "query": [
+                                {
+                                  "key": "maxPageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "pageToken",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "filter",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "465ed874-7053-4375-ad3a-fcdd14ffc5c6",
+                                  "key": "groupId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "List members and their roles in a group."
+                          },
+                          "response": [
+                            {
+                              "id": "6b901811-b455-46ee-a762-4989ff62a4b9",
+                              "name": "List of group memberships",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/cloud/v2/groups/:groupId/memberships?maxPageSize=<integer>&pageToken=<string>&filter=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "cloud",
+                                    "v2",
+                                    "groups",
+                                    ":groupId",
+                                    "memberships"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "maxPageSize",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "key": "pageToken",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "filter",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "groupId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"groupMemberships\": [\n    {\n      \"path\": \"<string>\",\n      \"user\": \"<string>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"path\": \"<string>\",\n      \"user\": \"<string>\",\n      \"role\": \"<string>\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:48:42.000Z",
+                              "updatedAt": "2026-07-28T02:48:42.000Z",
+                              "uid": "35240-6b901811-b455-46ee-a762-4989ff62a4b9"
+                            },
+                            {
+                              "id": "e89c6bab-989f-4e3c-aad0-ccbaf093eef0",
+                              "name": "Authentication failed",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/cloud/v2/groups/:groupId/memberships?maxPageSize=<integer>&pageToken=<string>&filter=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "cloud",
+                                    "v2",
+                                    "groups",
+                                    ":groupId",
+                                    "memberships"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "maxPageSize",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "key": "pageToken",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "filter",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "groupId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:48:42.000Z",
+                              "updatedAt": "2026-07-28T02:48:42.000Z",
+                              "uid": "35240-e89c6bab-989f-4e3c-aad0-ccbaf093eef0"
+                            },
+                            {
+                              "id": "2eefc5fc-b291-4bb1-9faa-81eb4a4c72dd",
+                              "name": "Resource not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/cloud/v2/groups/:groupId/memberships?maxPageSize=<integer>&pageToken=<string>&filter=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "cloud",
+                                    "v2",
+                                    "groups",
+                                    ":groupId",
+                                    "memberships"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "maxPageSize",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "key": "pageToken",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "filter",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "groupId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:48:42.000Z",
+                              "updatedAt": "2026-07-28T02:48:42.000Z",
+                              "uid": "35240-2eefc5fc-b291-4bb1-9faa-81eb4a4c72dd"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:48:42.000Z",
+                          "updatedAt": "2026-07-28T02:48:42.000Z",
+                          "uid": "35240-b39838dd-5bde-40a6-ad62-10702b11a0a4"
+                        }
+                      ],
+                      "id": "552537b2-55d7-4281-9c15-256c3e15c0c9",
+                      "createdAt": "2026-07-28T02:48:42.000Z",
+                      "updatedAt": "2026-07-28T02:48:42.000Z",
+                      "uid": "35240-552537b2-55d7-4281-9c15-256c3e15c0c9"
+                    },
+                    {
+                      "name": "Get Group",
+                      "id": "f6f9b285-c2de-4ebe-9431-22ab6cc77b77",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/cloud/v2/groups/:groupId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cloud",
+                            "v2",
+                            "groups",
+                            ":groupId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "eea6fe3d-30c3-4c20-9175-8d85a4abea70",
+                              "key": "groupId",
+                              "value": "<string>",
+                              "description": "(Required) The group ID"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve information about a Roblox group by its ID."
+                      },
+                      "response": [
+                        {
+                          "id": "905df171-45f4-4b76-98e1-f57b0a343c21",
+                          "name": "Group information",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/cloud/v2/groups/:groupId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "cloud",
+                                "v2",
+                                "groups",
+                                ":groupId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "groupId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"owner\": {\n    \"path\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"about\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"premium\": \"<boolean>\",\n    \"idVerified\": \"<boolean>\",\n    \"socialNetworkProfiles\": {}\n  },\n  \"memberCount\": \"<integer>\",\n  \"publicEntryAllowed\": \"<boolean>\",\n  \"locked\": \"<boolean>\",\n  \"verified\": \"<boolean>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T02:48:42.000Z",
+                          "updatedAt": "2026-07-28T02:48:42.000Z",
+                          "uid": "35240-905df171-45f4-4b76-98e1-f57b0a343c21"
+                        },
+                        {
+                          "id": "b6fb5c79-52da-423f-8916-ea06534c65c3",
+                          "name": "Authentication failed",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/cloud/v2/groups/:groupId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "cloud",
+                                "v2",
+                                "groups",
+                                ":groupId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "groupId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:48:42.000Z",
+                          "updatedAt": "2026-07-28T02:48:42.000Z",
+                          "uid": "35240-b6fb5c79-52da-423f-8916-ea06534c65c3"
+                        },
+                        {
+                          "id": "974a981f-0c01-4b0c-b7b7-4679bc5ad30d",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/cloud/v2/groups/:groupId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "cloud",
+                                "v2",
+                                "groups",
+                                ":groupId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "groupId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:48:42.000Z",
+                          "updatedAt": "2026-07-28T02:48:42.000Z",
+                          "uid": "35240-974a981f-0c01-4b0c-b7b7-4679bc5ad30d"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:48:42.000Z",
+                      "updatedAt": "2026-07-28T02:48:42.000Z",
+                      "uid": "35240-f6f9b285-c2de-4ebe-9431-22ab6cc77b77"
+                    }
+                  ],
+                  "id": "092960c4-45f8-4456-ad10-af9d041c9785",
+                  "createdAt": "2026-07-28T02:48:42.000Z",
+                  "updatedAt": "2026-07-28T02:48:42.000Z",
+                  "uid": "35240-092960c4-45f8-4456-ad10-af9d041c9785"
+                }
+              ],
+              "id": "2cee40fd-a76a-43fe-a555-e66b3a780a38",
+              "createdAt": "2026-07-28T02:48:42.000Z",
+              "updatedAt": "2026-07-28T02:48:42.000Z",
+              "uid": "35240-2cee40fd-a76a-43fe-a555-e66b3a780a38"
+            }
+          ],
+          "id": "b078115e-9e2e-4d94-84f0-78a2c9130dd0",
+          "createdAt": "2026-07-28T02:48:42.000Z",
+          "updatedAt": "2026-07-28T02:48:42.000Z",
+          "uid": "35240-b078115e-9e2e-4d94-84f0-78a2c9130dd0"
+        }
+      ],
+      "id": "c5361184-1b87-48f4-91f3-eee62b4ad635",
+      "createdAt": "2026-07-28T02:48:42.000Z",
+      "updatedAt": "2026-07-28T02:48:42.000Z",
+      "uid": "35240-c5361184-1b87-48f4-91f3-eee62b4ad635"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://apis.roblox.com"
+    }
+  ]
+}

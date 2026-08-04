@@ -1,0 +1,949 @@
+{
+  "info": {
+    "_postman_id": "39c13dcc-88f2-44ea-a0a3-1485a5fe8483",
+    "name": "Roblox Open Cloud Assets Places API",
+    "description": "The Roblox Open Cloud API provides external programmatic access to Roblox platform resources. It enables server-side operations on experiences, places, data stores, memory stores, users, groups, assets, messaging, badges, game passes, and subscriptions. Authentication uses API keys scoped to specific resources. The API is organized into Open Cloud v2, v1, and Legacy tiers with consistent RESTful patterns.\n\nContact Support:\n Name: Roblox Developer Relations",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:48:46.000Z",
+    "updatedAt": "2026-07-28T02:48:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-39c13dcc-88f2-44ea-a0a3-1485a5fe8483"
+  },
+  "item": [
+    {
+      "name": "cloud",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "universes",
+              "item": [
+                {
+                  "name": "{universeId}",
+                  "item": [
+                    {
+                      "name": "places",
+                      "item": [
+                        {
+                          "name": "{placeId}",
+                          "item": [
+                            {
+                              "name": "Get Place",
+                              "id": "119c8d27-22fc-4805-9166-896c4a73f1d9",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "apikey",
+                                  "apikey": [
+                                    {
+                                      "key": "key",
+                                      "value": "x-api-key",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "value",
+                                      "value": "{{apiKey}}",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "in",
+                                      "value": "header",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/cloud/v2/universes/:universeId/places/:placeId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "cloud",
+                                    "v2",
+                                    "universes",
+                                    ":universeId",
+                                    "places",
+                                    ":placeId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "ddab84ab-230e-44b1-aadc-65139fa3eaf0",
+                                      "key": "universeId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "133fd2bc-0136-4a5f-9594-83453f944210",
+                                      "key": "placeId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Retrieve details about a specific place within a universe."
+                              },
+                              "response": [
+                                {
+                                  "id": "0a7aa372-3805-4ef5-a51c-1b1e434a2c48",
+                                  "name": "Place details",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/cloud/v2/universes/:universeId/places/:placeId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "cloud",
+                                        "v2",
+                                        "universes",
+                                        ":universeId",
+                                        "places",
+                                        ":placeId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universeId"
+                                        },
+                                        {
+                                          "key": "placeId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"id\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"serverSize\": \"<integer>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\"\n}",
+                                  "createdAt": "2026-07-28T02:48:47.000Z",
+                                  "updatedAt": "2026-07-28T02:48:47.000Z",
+                                  "uid": "35240-0a7aa372-3805-4ef5-a51c-1b1e434a2c48"
+                                },
+                                {
+                                  "id": "a2eabdfb-cc6e-4259-9eab-7330461f31e1",
+                                  "name": "Authentication failed",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/cloud/v2/universes/:universeId/places/:placeId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "cloud",
+                                        "v2",
+                                        "universes",
+                                        ":universeId",
+                                        "places",
+                                        ":placeId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universeId"
+                                        },
+                                        {
+                                          "key": "placeId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T02:48:47.000Z",
+                                  "updatedAt": "2026-07-28T02:48:47.000Z",
+                                  "uid": "35240-a2eabdfb-cc6e-4259-9eab-7330461f31e1"
+                                },
+                                {
+                                  "id": "6d828372-0f2f-4e7e-b04c-52a4da8adf0d",
+                                  "name": "Resource not found",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/cloud/v2/universes/:universeId/places/:placeId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "cloud",
+                                        "v2",
+                                        "universes",
+                                        ":universeId",
+                                        "places",
+                                        ":placeId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universeId"
+                                        },
+                                        {
+                                          "key": "placeId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T02:48:47.000Z",
+                                  "updatedAt": "2026-07-28T02:48:47.000Z",
+                                  "uid": "35240-6d828372-0f2f-4e7e-b04c-52a4da8adf0d"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T02:48:47.000Z",
+                              "updatedAt": "2026-07-28T02:48:47.000Z",
+                              "uid": "35240-119c8d27-22fc-4805-9166-896c4a73f1d9"
+                            },
+                            {
+                              "name": "Update Place",
+                              "id": "7c1651fd-198f-4b2f-b0a1-5260e2dbd9bb",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "apikey",
+                                  "apikey": [
+                                    {
+                                      "key": "key",
+                                      "value": "x-api-key",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "value",
+                                      "value": "{{apiKey}}",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "in",
+                                      "value": "header",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"serverSize\": \"<integer>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/cloud/v2/universes/:universeId/places/:placeId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "cloud",
+                                    "v2",
+                                    "universes",
+                                    ":universeId",
+                                    "places",
+                                    ":placeId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "7bb77685-f75c-4176-8689-3f4278a37d5f",
+                                      "key": "universeId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "63f366b5-9bf1-406f-a2d2-fc2a30639f61",
+                                      "key": "placeId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Update settings for a place."
+                              },
+                              "response": [
+                                {
+                                  "id": "8fbd7f69-b67c-49da-98a8-debd53e79a2a",
+                                  "name": "Place updated",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"serverSize\": \"<integer>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/cloud/v2/universes/:universeId/places/:placeId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "cloud",
+                                        "v2",
+                                        "universes",
+                                        ":universeId",
+                                        "places",
+                                        ":placeId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universeId"
+                                        },
+                                        {
+                                          "key": "placeId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"id\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"serverSize\": \"<integer>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\"\n}",
+                                  "createdAt": "2026-07-28T02:48:47.000Z",
+                                  "updatedAt": "2026-07-28T02:48:47.000Z",
+                                  "uid": "35240-8fbd7f69-b67c-49da-98a8-debd53e79a2a"
+                                },
+                                {
+                                  "id": "3ca0a189-28ff-4c60-acfd-a3486f45278a",
+                                  "name": "Authentication failed",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"serverSize\": \"<integer>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/cloud/v2/universes/:universeId/places/:placeId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "cloud",
+                                        "v2",
+                                        "universes",
+                                        ":universeId",
+                                        "places",
+                                        ":placeId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universeId"
+                                        },
+                                        {
+                                          "key": "placeId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T02:48:47.000Z",
+                                  "updatedAt": "2026-07-28T02:48:47.000Z",
+                                  "uid": "35240-3ca0a189-28ff-4c60-acfd-a3486f45278a"
+                                },
+                                {
+                                  "id": "d3268b63-354e-430f-acb2-f53dab439282",
+                                  "name": "Resource not found",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"serverSize\": \"<integer>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/cloud/v2/universes/:universeId/places/:placeId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "cloud",
+                                        "v2",
+                                        "universes",
+                                        ":universeId",
+                                        "places",
+                                        ":placeId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universeId"
+                                        },
+                                        {
+                                          "key": "placeId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T02:48:47.000Z",
+                                  "updatedAt": "2026-07-28T02:48:47.000Z",
+                                  "uid": "35240-d3268b63-354e-430f-acb2-f53dab439282"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T02:48:47.000Z",
+                              "updatedAt": "2026-07-28T02:48:47.000Z",
+                              "uid": "35240-7c1651fd-198f-4b2f-b0a1-5260e2dbd9bb"
+                            }
+                          ],
+                          "id": "237603f9-9a11-4468-916b-2fc273928f6e",
+                          "createdAt": "2026-07-28T02:48:47.000Z",
+                          "updatedAt": "2026-07-28T02:48:47.000Z",
+                          "uid": "35240-237603f9-9a11-4468-916b-2fc273928f6e"
+                        }
+                      ],
+                      "id": "bfb7f0a3-c9d0-40d2-a709-badd7c015052",
+                      "createdAt": "2026-07-28T02:48:47.000Z",
+                      "updatedAt": "2026-07-28T02:48:47.000Z",
+                      "uid": "35240-bfb7f0a3-c9d0-40d2-a709-badd7c015052"
+                    }
+                  ],
+                  "id": "679f1208-76ec-42e6-b6a5-bcab3de3eccb",
+                  "createdAt": "2026-07-28T02:48:47.000Z",
+                  "updatedAt": "2026-07-28T02:48:47.000Z",
+                  "uid": "35240-679f1208-76ec-42e6-b6a5-bcab3de3eccb"
+                }
+              ],
+              "id": "b213f07f-8592-480a-a166-b0b58d36f883",
+              "createdAt": "2026-07-28T02:48:47.000Z",
+              "updatedAt": "2026-07-28T02:48:47.000Z",
+              "uid": "35240-b213f07f-8592-480a-a166-b0b58d36f883"
+            }
+          ],
+          "id": "bbea988d-bdf4-4895-8556-27423cee5ac1",
+          "createdAt": "2026-07-28T02:48:47.000Z",
+          "updatedAt": "2026-07-28T02:48:47.000Z",
+          "uid": "35240-bbea988d-bdf4-4895-8556-27423cee5ac1"
+        }
+      ],
+      "id": "a3779870-0461-42f5-ab39-00e8304d25b4",
+      "createdAt": "2026-07-28T02:48:47.000Z",
+      "updatedAt": "2026-07-28T02:48:47.000Z",
+      "uid": "35240-a3779870-0461-42f5-ab39-00e8304d25b4"
+    },
+    {
+      "name": "universes",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "{universeId}",
+              "item": [
+                {
+                  "name": "places",
+                  "item": [
+                    {
+                      "name": "{placeId}",
+                      "item": [
+                        {
+                          "name": "versions",
+                          "item": [
+                            {
+                              "name": "Publish Place",
+                              "id": "e7c5c220-ecf3-41d5-84b1-1ae756889732",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "apikey",
+                                  "apikey": [
+                                    {
+                                      "key": "key",
+                                      "value": "x-api-key",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "value",
+                                      "value": "{{apiKey}}",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "in",
+                                      "value": "header",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/octet-stream"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "file",
+                                  "file": {}
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/universes/v1/:universeId/places/:placeId/versions?versionType=Published",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "universes",
+                                    "v1",
+                                    ":universeId",
+                                    "places",
+                                    ":placeId",
+                                    "versions"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "versionType",
+                                      "value": "Published"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "39794626-b1c3-4a3a-b64a-800bd26d6c7e",
+                                      "key": "universeId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "68e65830-f681-4be7-b147-6f7fe8c548f1",
+                                      "key": "placeId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Publish a new version of a place by uploading a .rbxl or .rbxlx file. This deploys the new place version to production."
+                              },
+                              "response": [
+                                {
+                                  "id": "16b9944b-2fd9-408d-962f-1f0033054b97",
+                                  "name": "Place published successfully",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/octet-stream"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "file",
+                                      "file": {}
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/universes/v1/:universeId/places/:placeId/versions?versionType=Published",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "universes",
+                                        "v1",
+                                        ":universeId",
+                                        "places",
+                                        ":placeId",
+                                        "versions"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "versionType",
+                                          "value": "Published"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universeId"
+                                        },
+                                        {
+                                          "key": "placeId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"versionNumber\": \"<integer>\",\n  \"versionType\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T02:48:47.000Z",
+                                  "updatedAt": "2026-07-28T02:48:47.000Z",
+                                  "uid": "35240-16b9944b-2fd9-408d-962f-1f0033054b97"
+                                },
+                                {
+                                  "id": "71ed0ecb-fdd1-44b1-8f20-5b41ea24ec6f",
+                                  "name": "Authentication failed",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/octet-stream"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "file",
+                                      "file": {}
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/universes/v1/:universeId/places/:placeId/versions?versionType=Published",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "universes",
+                                        "v1",
+                                        ":universeId",
+                                        "places",
+                                        ":placeId",
+                                        "versions"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "versionType",
+                                          "value": "Published"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universeId"
+                                        },
+                                        {
+                                          "key": "placeId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T02:48:47.000Z",
+                                  "updatedAt": "2026-07-28T02:48:47.000Z",
+                                  "uid": "35240-71ed0ecb-fdd1-44b1-8f20-5b41ea24ec6f"
+                                },
+                                {
+                                  "id": "c2d7688b-7378-4842-8abd-b3916237449d",
+                                  "name": "Insufficient permissions for this resource",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/octet-stream"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "file",
+                                      "file": {}
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/universes/v1/:universeId/places/:placeId/versions?versionType=Published",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "universes",
+                                        "v1",
+                                        ":universeId",
+                                        "places",
+                                        ":placeId",
+                                        "versions"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "versionType",
+                                          "value": "Published"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universeId"
+                                        },
+                                        {
+                                          "key": "placeId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T02:48:47.000Z",
+                                  "updatedAt": "2026-07-28T02:48:47.000Z",
+                                  "uid": "35240-c2d7688b-7378-4842-8abd-b3916237449d"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T02:48:47.000Z",
+                              "updatedAt": "2026-07-28T02:48:47.000Z",
+                              "uid": "35240-e7c5c220-ecf3-41d5-84b1-1ae756889732"
+                            }
+                          ],
+                          "id": "1ae11974-90e3-4674-a163-6ea5104a3913",
+                          "createdAt": "2026-07-28T02:48:47.000Z",
+                          "updatedAt": "2026-07-28T02:48:47.000Z",
+                          "uid": "35240-1ae11974-90e3-4674-a163-6ea5104a3913"
+                        }
+                      ],
+                      "id": "1daecbf1-e790-449e-8ad6-d5a04d309702",
+                      "createdAt": "2026-07-28T02:48:47.000Z",
+                      "updatedAt": "2026-07-28T02:48:47.000Z",
+                      "uid": "35240-1daecbf1-e790-449e-8ad6-d5a04d309702"
+                    }
+                  ],
+                  "id": "fa5f6024-b3af-49cc-99f0-6d18f52e5234",
+                  "createdAt": "2026-07-28T02:48:47.000Z",
+                  "updatedAt": "2026-07-28T02:48:47.000Z",
+                  "uid": "35240-fa5f6024-b3af-49cc-99f0-6d18f52e5234"
+                }
+              ],
+              "id": "59debb4b-7003-4fcd-9323-ebc34743a59a",
+              "createdAt": "2026-07-28T02:48:47.000Z",
+              "updatedAt": "2026-07-28T02:48:47.000Z",
+              "uid": "35240-59debb4b-7003-4fcd-9323-ebc34743a59a"
+            }
+          ],
+          "id": "fc3681c2-dae8-4474-a3fa-fe7ab0754a0c",
+          "createdAt": "2026-07-28T02:48:47.000Z",
+          "updatedAt": "2026-07-28T02:48:47.000Z",
+          "uid": "35240-fc3681c2-dae8-4474-a3fa-fe7ab0754a0c"
+        }
+      ],
+      "id": "38d9df97-5f0b-4f66-a340-a6a996eb1f53",
+      "createdAt": "2026-07-28T02:48:47.000Z",
+      "updatedAt": "2026-07-28T02:48:47.000Z",
+      "uid": "35240-38d9df97-5f0b-4f66-a340-a6a996eb1f53"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://apis.roblox.com"
+    }
+  ]
+}

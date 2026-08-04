@@ -1,0 +1,714 @@
+{
+  "info": {
+    "_postman_id": "763de5f7-8281-442b-914c-709a1120479b",
+    "name": "Roblox Open Cloud Assets API",
+    "description": "The Roblox Open Cloud API provides external programmatic access to Roblox platform resources. It enables server-side operations on experiences, places, data stores, memory stores, users, groups, assets, messaging, badges, game passes, and subscriptions. Authentication uses API keys scoped to specific resources. The API is organized into Open Cloud v2, v1, and Legacy tiers with consistent RESTful patterns.\n\nContact Support:\n Name: Roblox Developer Relations",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:48:36.000Z",
+    "updatedAt": "2026-07-28T02:48:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-763de5f7-8281-442b-914c-709a1120479b"
+  },
+  "item": [
+    {
+      "name": "assets",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "assets",
+              "item": [
+                {
+                  "name": "{assetId}",
+                  "item": [
+                    {
+                      "name": "Get Asset",
+                      "id": "d4f37fc2-749f-4e56-acc2-b77d888308d1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/v1/assets/:assetId?readMask=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            "v1",
+                            "assets",
+                            ":assetId"
+                          ],
+                          "query": [
+                            {
+                              "key": "readMask",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "9044215e-2d49-4278-84c5-5f5d993a5e8c",
+                              "key": "assetId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Retrieve details for a specific asset by ID."
+                      },
+                      "response": [
+                        {
+                          "id": "81a06bf0-2099-4dad-a49e-25a7f948925d",
+                          "name": "Asset details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/assets/v1/assets/:assetId?readMask=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "assets",
+                                "v1",
+                                "assets",
+                                ":assetId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "readMask",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "assetId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"assetId\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"creationContext\": {},\n  \"moderationResult\": {},\n  \"state\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:48:37.000Z",
+                          "updatedAt": "2026-07-28T02:48:37.000Z",
+                          "uid": "35240-81a06bf0-2099-4dad-a49e-25a7f948925d"
+                        },
+                        {
+                          "id": "ac199a60-7ab6-4b53-a36a-4bfbb600acac",
+                          "name": "Authentication failed",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/assets/v1/assets/:assetId?readMask=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "assets",
+                                "v1",
+                                "assets",
+                                ":assetId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "readMask",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "assetId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:48:37.000Z",
+                          "updatedAt": "2026-07-28T02:48:37.000Z",
+                          "uid": "35240-ac199a60-7ab6-4b53-a36a-4bfbb600acac"
+                        },
+                        {
+                          "id": "8a33446c-332b-49a5-8337-65bbe2884bb7",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/assets/v1/assets/:assetId?readMask=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "assets",
+                                "v1",
+                                "assets",
+                                ":assetId"
+                              ],
+                              "query": [
+                                {
+                                  "key": "readMask",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "assetId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:48:37.000Z",
+                          "updatedAt": "2026-07-28T02:48:37.000Z",
+                          "uid": "35240-8a33446c-332b-49a5-8337-65bbe2884bb7"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:48:37.000Z",
+                      "updatedAt": "2026-07-28T02:48:37.000Z",
+                      "uid": "35240-d4f37fc2-749f-4e56-acc2-b77d888308d1"
+                    },
+                    {
+                      "name": "Update Asset",
+                      "id": "ea49f956-3137-4e7b-a96a-1e050a033627",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "x-api-key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "JSON-encoded update metadata",
+                              "key": "request",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "key": "fileContent",
+                              "type": "file",
+                              "value": null
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/v1/assets/:assetId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            "v1",
+                            "assets",
+                            ":assetId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e268f23b-0f53-4ffa-8e5c-889e07e92c7a",
+                              "key": "assetId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Update metadata for an existing asset."
+                      },
+                      "response": [
+                        {
+                          "id": "d1f8a03b-c877-4c10-98f5-6ebc9e6ec90c",
+                          "name": "Asset update operation",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "JSON-encoded update metadata",
+                                  "key": "request",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "key": "fileContent",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/assets/v1/assets/:assetId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "assets",
+                                "v1",
+                                "assets",
+                                ":assetId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "assetId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"path\": \"<string>\",\n  \"done\": \"<boolean>\",\n  \"response\": {}\n}",
+                          "createdAt": "2026-07-28T02:48:37.000Z",
+                          "updatedAt": "2026-07-28T02:48:37.000Z",
+                          "uid": "35240-d1f8a03b-c877-4c10-98f5-6ebc9e6ec90c"
+                        },
+                        {
+                          "id": "8387cd47-a0c1-4595-8418-0685b42b7043",
+                          "name": "Authentication failed",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "x-api-key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "description": "JSON-encoded update metadata",
+                                  "key": "request",
+                                  "value": "<string>",
+                                  "type": "text"
+                                },
+                                {
+                                  "key": "fileContent",
+                                  "type": "file"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/assets/v1/assets/:assetId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "assets",
+                                "v1",
+                                "assets",
+                                ":assetId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "assetId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:48:37.000Z",
+                          "updatedAt": "2026-07-28T02:48:37.000Z",
+                          "uid": "35240-8387cd47-a0c1-4595-8418-0685b42b7043"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:48:37.000Z",
+                      "updatedAt": "2026-07-28T02:48:37.000Z",
+                      "uid": "35240-ea49f956-3137-4e7b-a96a-1e050a033627"
+                    }
+                  ],
+                  "id": "4714faad-a978-4580-8595-59cd8f3e387c",
+                  "createdAt": "2026-07-28T02:48:36.000Z",
+                  "updatedAt": "2026-07-28T02:48:36.000Z",
+                  "uid": "35240-4714faad-a978-4580-8595-59cd8f3e387c"
+                },
+                {
+                  "name": "Create Asset",
+                  "id": "196615b4-c628-44b4-ba48-a72699aedacc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "x-api-key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) JSON-encoded asset metadata",
+                          "key": "request",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "fileContent",
+                          "type": "file",
+                          "value": null
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/assets/v1/assets",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "assets",
+                        "v1",
+                        "assets"
+                      ]
+                    },
+                    "description": "Upload and create a new asset on Roblox."
+                  },
+                  "response": [
+                    {
+                      "id": "e3c5f9b1-4b6f-471d-a460-b15486dc48d8",
+                      "name": "Asset creation operation initiated",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) JSON-encoded asset metadata",
+                              "key": "request",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "fileContent",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/v1/assets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            "v1",
+                            "assets"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"path\": \"<string>\",\n  \"done\": \"<boolean>\",\n  \"response\": {}\n}",
+                      "createdAt": "2026-07-28T02:48:37.000Z",
+                      "updatedAt": "2026-07-28T02:48:37.000Z",
+                      "uid": "35240-e3c5f9b1-4b6f-471d-a460-b15486dc48d8"
+                    },
+                    {
+                      "id": "d11ba37b-9af5-4e90-93c9-3126e1b85d05",
+                      "name": "Authentication failed",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "x-api-key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) JSON-encoded asset metadata",
+                              "key": "request",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "fileContent",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/assets/v1/assets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "assets",
+                            "v1",
+                            "assets"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:48:37.000Z",
+                      "updatedAt": "2026-07-28T02:48:37.000Z",
+                      "uid": "35240-d11ba37b-9af5-4e90-93c9-3126e1b85d05"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:48:37.000Z",
+                  "updatedAt": "2026-07-28T02:48:37.000Z",
+                  "uid": "35240-196615b4-c628-44b4-ba48-a72699aedacc"
+                }
+              ],
+              "id": "ba260d41-76d7-43eb-ae14-8514da1b9b6d",
+              "createdAt": "2026-07-28T02:48:36.000Z",
+              "updatedAt": "2026-07-28T02:48:36.000Z",
+              "uid": "35240-ba260d41-76d7-43eb-ae14-8514da1b9b6d"
+            }
+          ],
+          "id": "1ed6259d-06b3-4346-b46c-0a075237f2f3",
+          "createdAt": "2026-07-28T02:48:36.000Z",
+          "updatedAt": "2026-07-28T02:48:36.000Z",
+          "uid": "35240-1ed6259d-06b3-4346-b46c-0a075237f2f3"
+        }
+      ],
+      "id": "69ddc367-b69b-44da-804b-f7ccaa8d14b4",
+      "createdAt": "2026-07-28T02:48:36.000Z",
+      "updatedAt": "2026-07-28T02:48:36.000Z",
+      "uid": "35240-69ddc367-b69b-44da-804b-f7ccaa8d14b4"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://apis.roblox.com"
+    }
+  ]
+}

@@ -1,0 +1,1128 @@
+openapi: 3.0.3
+info:
+  title: Roblox Open Cloud API
+  description: >-
+    The Roblox Open Cloud API provides external programmatic access to Roblox
+    platform resources. It enables server-side operations on experiences,
+    places, data stores, memory stores, users, groups, assets, messaging,
+    badges, game passes, and subscriptions. Authentication uses API keys
+    scoped to specific resources. The API is organized into Open Cloud v2,
+    v1, and Legacy tiers with consistent RESTful patterns.
+  version: v2
+  contact:
+    name: Roblox Developer Relations
+    url: https://devforum.roblox.com
+  termsOfService: https://en.help.roblox.com/hc/en-us/articles/115004647846
+  license:
+    name: Proprietary
+servers:
+  - url: https://apis.roblox.com
+    description: Roblox Open Cloud API
+
+tags:
+  - name: Universes
+    description: Experience (universe) management
+  - name: Places
+    description: Place publishing and management
+  - name: Data Stores
+    description: Persistent data storage for experiences
+  - name: Memory Stores
+    description: Ephemeral in-memory data storage
+  - name: Messaging
+    description: Cross-server messaging service
+  - name: Users
+    description: Roblox user information
+  - name: Groups
+    description: Roblox group management
+  - name: Assets
+    description: Asset management and operations
+  - name: Badges
+    description: Badge management
+  - name: Game Passes
+    description: Game pass management
+  - name: Subscriptions
+    description: Subscription product management
+  - name: Inventory
+    description: User inventory and ownership
+
+paths:
+  /cloud/v2/universes/{universeId}:
+    get:
+      operationId: getUniverse
+      summary: Get Universe
+      description: Retrieve details about a Roblox experience (universe) by its ID.
+      tags:
+        - Universes
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: universeId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The universe ID
+      responses:
+        '200':
+          description: Universe details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Universe'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    patch:
+      operationId: updateUniverse
+      summary: Update Universe
+      description: Update settings for a Roblox experience (universe).
+      tags:
+        - Universes
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: universeId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: updateMask
+          in: query
+          schema:
+            type: string
+          description: Comma-separated list of fields to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUniverseRequest'
+      responses:
+        '200':
+          description: Universe updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Universe'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /cloud/v2/universes/{universeId}:restart-servers:
+    post:
+      operationId: restartUniverseServers
+      summary: Restart Universe Servers
+      description: Restart all active game servers for a universe.
+      tags:
+        - Universes
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: universeId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Server restart initiated
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /cloud/v2/universes/{universeId}/places/{placeId}:
+    get:
+      operationId: getPlace
+      summary: Get Place
+      description: Retrieve details about a specific place within a universe.
+      tags:
+        - Places
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: universeId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: placeId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Place details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Place'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    patch:
+      operationId: updatePlace
+      summary: Update Place
+      description: Update settings for a place.
+      tags:
+        - Places
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: universeId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: placeId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePlaceRequest'
+      responses:
+        '200':
+          description: Place updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Place'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /universes/v1/{universeId}/places/{placeId}/versions:
+    post:
+      operationId: publishPlace
+      summary: Publish Place
+      description: >-
+        Publish a new version of a place by uploading a .rbxl or .rbxlx file.
+        This deploys the new place version to production.
+      tags:
+        - Places
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: universeId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: placeId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: versionType
+          in: query
+          required: true
+          schema:
+            type: string
+            enum:
+              - Published
+              - Saved
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: Place published successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlaceVersion'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /datastores/v1/universes/{universeId}/standard-datastores:
+    get:
+      operationId: listDataStores
+      summary: List Data Stores
+      description: List all data stores in a universe.
+      tags:
+        - Data Stores
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: universeId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: prefix
+          in: query
+          schema:
+            type: string
+          description: Filter data stores by name prefix
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            maximum: 100
+        - name: cursor
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of data stores
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataStoreList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /datastores/v1/universes/{universeId}/standard-datastores/datastore/entries:
+    get:
+      operationId: listDataStoreEntries
+      summary: List Data Store Entries
+      description: List all entries (keys) in a data store.
+      tags:
+        - Data Stores
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: universeId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: datastoreName
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: scope
+          in: query
+          schema:
+            type: string
+            default: global
+        - name: prefix
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+        - name: cursor
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of data store entry keys
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataStoreEntryList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /datastores/v1/universes/{universeId}/standard-datastores/datastore/entries/entry:
+    get:
+      operationId: getDataStoreEntry
+      summary: Get Data Store Entry
+      description: Retrieve the value and metadata for a specific data store entry.
+      tags:
+        - Data Stores
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: universeId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: datastoreName
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: entryKey
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: scope
+          in: query
+          schema:
+            type: string
+            default: global
+        - name: versionId
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Data store entry value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataStoreEntry'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    post:
+      operationId: setDataStoreEntry
+      summary: Set Data Store Entry
+      description: Set or update the value of a data store entry.
+      tags:
+        - Data Stores
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: universeId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: datastoreName
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: entryKey
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: scope
+          in: query
+          schema:
+            type: string
+            default: global
+        - name: matchVersion
+          in: query
+          schema:
+            type: string
+          description: Only update if current version matches
+        - name: exclusiveCreate
+          in: query
+          schema:
+            type: boolean
+          description: Only create if entry does not exist
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Entry set successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataStoreEntryMetadata'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    delete:
+      operationId: deleteDataStoreEntry
+      summary: Delete Data Store Entry
+      description: Remove an entry from a data store.
+      tags:
+        - Data Stores
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: universeId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: datastoreName
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: entryKey
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: scope
+          in: query
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Entry deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /messaging-service/v1/universes/{universeId}/topics/{topic}:
+    post:
+      operationId: publishMessage
+      summary: Publish Message
+      description: >-
+        Publish a message to a topic in the messaging service.
+        Messages are delivered to all servers in the universe subscribed to the topic.
+      tags:
+        - Messaging
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: universeId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: topic
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The message topic name (max 80 characters)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishMessageRequest'
+      responses:
+        '200':
+          description: Message published
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /cloud/v2/users/{userId}:
+    get:
+      operationId: getUser
+      summary: Get User
+      description: Retrieve information about a Roblox user by their user ID.
+      tags:
+        - Users
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The Roblox user ID
+      responses:
+        '200':
+          description: User information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /cloud/v2/users:
+    get:
+      operationId: listUsers
+      summary: List Users
+      description: List users by filter criteria.
+      tags:
+        - Users
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: filter
+          in: query
+          schema:
+            type: string
+          description: Filter expression for users
+        - name: maxPageSize
+          in: query
+          schema:
+            type: integer
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /cloud/v2/groups/{groupId}:
+    get:
+      operationId: getGroup
+      summary: Get Group
+      description: Retrieve information about a Roblox group by its ID.
+      tags:
+        - Groups
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: groupId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The group ID
+      responses:
+        '200':
+          description: Group information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /cloud/v2/groups/{groupId}/memberships:
+    get:
+      operationId: listGroupMemberships
+      summary: List Group Memberships
+      description: List members and their roles in a group.
+      tags:
+        - Groups
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: groupId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: maxPageSize
+          in: query
+          schema:
+            type: integer
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+        - name: filter
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of group memberships
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupMembershipList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /assets/v1/assets:
+    post:
+      operationId: createAsset
+      summary: Create Asset
+      description: Upload and create a new asset on Roblox.
+      tags:
+        - Assets
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateAssetRequest'
+      responses:
+        '200':
+          description: Asset creation operation initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /assets/v1/assets/{assetId}:
+    get:
+      operationId: getAsset
+      summary: Get Asset
+      description: Retrieve details for a specific asset by ID.
+      tags:
+        - Assets
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: assetId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: readMask
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Asset details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    patch:
+      operationId: updateAsset
+      summary: Update Asset
+      description: Update metadata for an existing asset.
+      tags:
+        - Assets
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: assetId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UpdateAssetRequest'
+      responses:
+        '200':
+          description: Asset update operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /cloud/v2/universes/{universeId}/user-restrictions/{userId}:
+    get:
+      operationId: getUserRestriction
+      summary: Get User Restriction
+      description: Check if a user is restricted from a universe.
+      tags:
+        - Universes
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: universeId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User restriction details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRestriction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    patch:
+      operationId: updateUserRestriction
+      summary: Update User Restriction
+      description: Ban or unban a user from a universe.
+      tags:
+        - Universes
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: universeId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRestriction'
+      responses:
+        '200':
+          description: User restriction updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRestriction'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Roblox Open Cloud API key scoped to specific resources
+
+  responses:
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Insufficient permissions for this resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: object
+
+    Universe:
+      type: object
+      properties:
+        id:
+          type: string
+        displayName:
+          type: string
+        description:
+          type: string
+        visibility:
+          type: string
+          enum:
+            - public
+            - private
+        socialLinks:
+          type: array
+          items:
+            type: object
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+
+    UpdateUniverseRequest:
+      type: object
+      properties:
+        displayName:
+          type: string
+        description:
+          type: string
+        visibility:
+          type: string
+
+    Place:
+      type: object
+      properties:
+        id:
+          type: string
+        displayName:
+          type: string
+        description:
+          type: string
+        serverSize:
+          type: integer
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+
+    UpdatePlaceRequest:
+      type: object
+      properties:
+        displayName:
+          type: string
+        description:
+          type: string
+        serverSize:
+          type: integer
+
+    PlaceVersion:
+      type: object
+      properties:
+        versionNumber:
+          type: integer
+        versionType:
+          type: string
+
+    DataStoreList:
+      type: object
+      properties:
+        datastores:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              createdTime:
+                type: string
+                format: date-time
+        nextPageCursor:
+          type: string
+
+    DataStoreEntryList:
+      type: object
+      properties:
+        keys:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+        nextPageCursor:
+          type: string
+
+    DataStoreEntry:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties: true
+        version:
+          type: string
+        attributes:
+          type: object
+        userIds:
+          type: array
+          items:
+            type: integer
+
+    DataStoreEntryMetadata:
+      type: object
+      properties:
+        version:
+          type: string
+        deleted:
+          type: boolean
+        contentLength:
+          type: integer
+        createdTime:
+          type: string
+          format: date-time
+        objectCreatedTime:
+          type: string
+          format: date-time
+
+    PublishMessageRequest:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          description: The message content (max 1kB)
+
+    User:
+      type: object
+      properties:
+        path:
+          type: string
+        createTime:
+          type: string
+          format: date-time
+        id:
+          type: string
+        name:
+          type: string
+        displayName:
+          type: string
+        about:
+          type: string
+        locale:
+          type: string
+        premium:
+          type: boolean
+        idVerified:
+          type: boolean
+        socialNetworkProfiles:
+          type: object
+
+    UserList:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        nextPageToken:
+          type: string
+
+    Group:
+      type: object
+      properties:
+        id:
+          type: string
+        displayName:
+          type: string
+        description:
+          type: string
+        owner:
+          $ref: '#/components/schemas/User'
+        memberCount:
+          type: integer
+        publicEntryAllowed:
+          type: boolean
+        locked:
+          type: boolean
+        verified:
+          type: boolean
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+
+    GroupMembership:
+      type: object
+      properties:
+        path:
+          type: string
+        user:
+          type: string
+        role:
+          type: string
+
+    GroupMembershipList:
+      type: object
+      properties:
+        groupMemberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupMembership'
+        nextPageToken:
+          type: string
+
+    Asset:
+      type: object
+      properties:
+        assetId:
+          type: string
+        assetType:
+          type: string
+        displayName:
+          type: string
+        description:
+          type: string
+        creationContext:
+          type: object
+        moderationResult:
+          type: object
+        state:
+          type: string
+
+    CreateAssetRequest:
+      type: object
+      required:
+        - request
+        - fileContent
+      properties:
+        request:
+          type: string
+          description: JSON-encoded asset metadata
+        fileContent:
+          type: string
+          format: binary
+
+    UpdateAssetRequest:
+      type: object
+      properties:
+        request:
+          type: string
+          description: JSON-encoded update metadata
+        fileContent:
+          type: string
+          format: binary
+
+    Operation:
+      type: object
+      properties:
+        path:
+          type: string
+        done:
+          type: boolean
+        response:
+          type: object
+
+    UserRestriction:
+      type: object
+      properties:
+        active:
+          type: boolean
+        startTime:
+          type: string
+          format: date-time
+        duration:
+          type: string
+          description: Duration in ISO 8601 duration format
+        privateReason:
+          type: string
+        displayReason:
+          type: string
+        excludeAltAccounts:
+          type: boolean
+        inherited:
+          type: boolean

@@ -1,0 +1,1357 @@
+{
+  "info": {
+    "_postman_id": "9a7909e3-ebfd-4283-b6d8-376bd749468a",
+    "name": "Roblox Open Cloud Assets Data Stores API",
+    "description": "The Roblox Open Cloud API provides external programmatic access to Roblox platform resources. It enables server-side operations on experiences, places, data stores, memory stores, users, groups, assets, messaging, badges, game passes, and subscriptions. Authentication uses API keys scoped to specific resources. The API is organized into Open Cloud v2, v1, and Legacy tiers with consistent RESTful patterns.\n\nContact Support:\n Name: Roblox Developer Relations",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:48:41.000Z",
+    "updatedAt": "2026-07-28T02:48:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9a7909e3-ebfd-4283-b6d8-376bd749468a"
+  },
+  "item": [
+    {
+      "name": "datastores",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "universes",
+              "item": [
+                {
+                  "name": "{universeId}",
+                  "item": [
+                    {
+                      "name": "standard-datastores",
+                      "item": [
+                        {
+                          "name": "datastore",
+                          "item": [
+                            {
+                              "name": "entries",
+                              "item": [
+                                {
+                                  "name": "entry",
+                                  "item": [
+                                    {
+                                      "name": "Get Data Store Entry",
+                                      "id": "e7ee3ed0-0c5f-4098-b060-7c299f7d6225",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "auth": {
+                                          "type": "apikey",
+                                          "apikey": [
+                                            {
+                                              "key": "key",
+                                              "value": "x-api-key",
+                                              "type": "string"
+                                            },
+                                            {
+                                              "key": "value",
+                                              "value": "{{apiKey}}",
+                                              "type": "string"
+                                            },
+                                            {
+                                              "key": "in",
+                                              "value": "header",
+                                              "type": "string"
+                                            }
+                                          ]
+                                        },
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/datastores/v1/universes/:universeId/standard-datastores/datastore/entries/entry?datastoreName=<string>&entryKey=<string>&scope=global&versionId=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "datastores",
+                                            "v1",
+                                            "universes",
+                                            ":universeId",
+                                            "standard-datastores",
+                                            "datastore",
+                                            "entries",
+                                            "entry"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "datastoreName",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "entryKey",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "key": "scope",
+                                              "value": "global"
+                                            },
+                                            {
+                                              "key": "versionId",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "621abdbb-7210-4296-af34-9b3896b0fc78",
+                                              "key": "universeId",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            }
+                                          ]
+                                        },
+                                        "description": "Retrieve the value and metadata for a specific data store entry."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "21feefa4-beb3-42fc-981c-555a42ee8a9f",
+                                          "name": "Data store entry value",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "x-api-key",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/datastores/v1/universes/:universeId/standard-datastores/datastore/entries/entry?datastoreName=<string>&entryKey=<string>&scope=global&versionId=<string>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "datastores",
+                                                "v1",
+                                                "universes",
+                                                ":universeId",
+                                                "standard-datastores",
+                                                "datastore",
+                                                "entries",
+                                                "entry"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) ",
+                                                  "key": "datastoreName",
+                                                  "value": "<string>"
+                                                },
+                                                {
+                                                  "description": "(Required) ",
+                                                  "key": "entryKey",
+                                                  "value": "<string>"
+                                                },
+                                                {
+                                                  "key": "scope",
+                                                  "value": "global"
+                                                },
+                                                {
+                                                  "key": "versionId",
+                                                  "value": "<string>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "universeId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"data\": {\n    \"nisi_\": -20076568.86201614,\n    \"eiusmod93_\": true\n  },\n  \"version\": \"<string>\",\n  \"attributes\": {},\n  \"userIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                                          "createdAt": "2026-07-28T02:48:41.000Z",
+                                          "updatedAt": "2026-07-28T02:48:41.000Z",
+                                          "uid": "35240-21feefa4-beb3-42fc-981c-555a42ee8a9f"
+                                        },
+                                        {
+                                          "id": "f6cd17a2-3c0b-4bc1-a8b0-5719aaedeff9",
+                                          "name": "Authentication failed",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "x-api-key",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/datastores/v1/universes/:universeId/standard-datastores/datastore/entries/entry?datastoreName=<string>&entryKey=<string>&scope=global&versionId=<string>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "datastores",
+                                                "v1",
+                                                "universes",
+                                                ":universeId",
+                                                "standard-datastores",
+                                                "datastore",
+                                                "entries",
+                                                "entry"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) ",
+                                                  "key": "datastoreName",
+                                                  "value": "<string>"
+                                                },
+                                                {
+                                                  "description": "(Required) ",
+                                                  "key": "entryKey",
+                                                  "value": "<string>"
+                                                },
+                                                {
+                                                  "key": "scope",
+                                                  "value": "global"
+                                                },
+                                                {
+                                                  "key": "versionId",
+                                                  "value": "<string>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "universeId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Unauthorized",
+                                          "code": 401,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                          "createdAt": "2026-07-28T02:48:41.000Z",
+                                          "updatedAt": "2026-07-28T02:48:41.000Z",
+                                          "uid": "35240-f6cd17a2-3c0b-4bc1-a8b0-5719aaedeff9"
+                                        },
+                                        {
+                                          "id": "5d2708c4-93c5-4635-abb1-dfffb439084c",
+                                          "name": "Resource not found",
+                                          "originalRequest": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "x-api-key",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/datastores/v1/universes/:universeId/standard-datastores/datastore/entries/entry?datastoreName=<string>&entryKey=<string>&scope=global&versionId=<string>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "datastores",
+                                                "v1",
+                                                "universes",
+                                                ":universeId",
+                                                "standard-datastores",
+                                                "datastore",
+                                                "entries",
+                                                "entry"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) ",
+                                                  "key": "datastoreName",
+                                                  "value": "<string>"
+                                                },
+                                                {
+                                                  "description": "(Required) ",
+                                                  "key": "entryKey",
+                                                  "value": "<string>"
+                                                },
+                                                {
+                                                  "key": "scope",
+                                                  "value": "global"
+                                                },
+                                                {
+                                                  "key": "versionId",
+                                                  "value": "<string>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "universeId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Not Found",
+                                          "code": 404,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                          "createdAt": "2026-07-28T02:48:41.000Z",
+                                          "updatedAt": "2026-07-28T02:48:41.000Z",
+                                          "uid": "35240-5d2708c4-93c5-4635-abb1-dfffb439084c"
+                                        }
+                                      ],
+                                      "createdAt": "2026-07-28T02:48:41.000Z",
+                                      "updatedAt": "2026-07-28T02:48:41.000Z",
+                                      "uid": "35240-e7ee3ed0-0c5f-4098-b060-7c299f7d6225"
+                                    },
+                                    {
+                                      "name": "Set Data Store Entry",
+                                      "id": "cf624c3b-2d62-456e-ab94-702aee1ee18e",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "auth": {
+                                          "type": "apikey",
+                                          "apikey": [
+                                            {
+                                              "key": "key",
+                                              "value": "x-api-key",
+                                              "type": "string"
+                                            },
+                                            {
+                                              "key": "value",
+                                              "value": "{{apiKey}}",
+                                              "type": "string"
+                                            },
+                                            {
+                                              "key": "in",
+                                              "value": "header",
+                                              "type": "string"
+                                            }
+                                          ]
+                                        },
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"tempor_a7\": false\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/datastores/v1/universes/:universeId/standard-datastores/datastore/entries/entry?datastoreName=<string>&entryKey=<string>&scope=global&matchVersion=<string>&exclusiveCreate=<boolean>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "datastores",
+                                            "v1",
+                                            "universes",
+                                            ":universeId",
+                                            "standard-datastores",
+                                            "datastore",
+                                            "entries",
+                                            "entry"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "datastoreName",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "entryKey",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "key": "scope",
+                                              "value": "global"
+                                            },
+                                            {
+                                              "description": "Only update if current version matches",
+                                              "key": "matchVersion",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "description": "Only create if entry does not exist",
+                                              "key": "exclusiveCreate",
+                                              "value": "<boolean>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "93b3f28f-5481-467b-a08d-fe7b7404d58d",
+                                              "key": "universeId",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            }
+                                          ]
+                                        },
+                                        "description": "Set or update the value of a data store entry."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "af5dd43e-aa01-42ea-bdf8-e2139e1f19e4",
+                                          "name": "Entry set successfully",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "x-api-key",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "{\n  \"tempor_a7\": false\n}",
+                                              "options": {
+                                                "raw": {
+                                                  "headerFamily": "json",
+                                                  "language": "json"
+                                                }
+                                              }
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/datastores/v1/universes/:universeId/standard-datastores/datastore/entries/entry?datastoreName=<string>&entryKey=<string>&scope=global&matchVersion=<string>&exclusiveCreate=<boolean>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "datastores",
+                                                "v1",
+                                                "universes",
+                                                ":universeId",
+                                                "standard-datastores",
+                                                "datastore",
+                                                "entries",
+                                                "entry"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) ",
+                                                  "key": "datastoreName",
+                                                  "value": "<string>"
+                                                },
+                                                {
+                                                  "description": "(Required) ",
+                                                  "key": "entryKey",
+                                                  "value": "<string>"
+                                                },
+                                                {
+                                                  "key": "scope",
+                                                  "value": "global"
+                                                },
+                                                {
+                                                  "description": "Only update if current version matches",
+                                                  "key": "matchVersion",
+                                                  "value": "<string>"
+                                                },
+                                                {
+                                                  "description": "Only create if entry does not exist",
+                                                  "key": "exclusiveCreate",
+                                                  "value": "<boolean>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "universeId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "OK",
+                                          "code": 200,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"version\": \"<string>\",\n  \"deleted\": \"<boolean>\",\n  \"contentLength\": \"<integer>\",\n  \"createdTime\": \"<dateTime>\",\n  \"objectCreatedTime\": \"<dateTime>\"\n}",
+                                          "createdAt": "2026-07-28T02:48:41.000Z",
+                                          "updatedAt": "2026-07-28T02:48:41.000Z",
+                                          "uid": "35240-af5dd43e-aa01-42ea-bdf8-e2139e1f19e4"
+                                        },
+                                        {
+                                          "id": "06f21d4d-f90a-471c-ab81-ecd7184d42cc",
+                                          "name": "Authentication failed",
+                                          "originalRequest": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "x-api-key",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "{\n  \"tempor_a7\": false\n}",
+                                              "options": {
+                                                "raw": {
+                                                  "headerFamily": "json",
+                                                  "language": "json"
+                                                }
+                                              }
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/datastores/v1/universes/:universeId/standard-datastores/datastore/entries/entry?datastoreName=<string>&entryKey=<string>&scope=global&matchVersion=<string>&exclusiveCreate=<boolean>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "datastores",
+                                                "v1",
+                                                "universes",
+                                                ":universeId",
+                                                "standard-datastores",
+                                                "datastore",
+                                                "entries",
+                                                "entry"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) ",
+                                                  "key": "datastoreName",
+                                                  "value": "<string>"
+                                                },
+                                                {
+                                                  "description": "(Required) ",
+                                                  "key": "entryKey",
+                                                  "value": "<string>"
+                                                },
+                                                {
+                                                  "key": "scope",
+                                                  "value": "global"
+                                                },
+                                                {
+                                                  "description": "Only update if current version matches",
+                                                  "key": "matchVersion",
+                                                  "value": "<string>"
+                                                },
+                                                {
+                                                  "description": "Only create if entry does not exist",
+                                                  "key": "exclusiveCreate",
+                                                  "value": "<boolean>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "universeId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Unauthorized",
+                                          "code": 401,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                          "createdAt": "2026-07-28T02:48:41.000Z",
+                                          "updatedAt": "2026-07-28T02:48:41.000Z",
+                                          "uid": "35240-06f21d4d-f90a-471c-ab81-ecd7184d42cc"
+                                        }
+                                      ],
+                                      "createdAt": "2026-07-28T02:48:41.000Z",
+                                      "updatedAt": "2026-07-28T02:48:41.000Z",
+                                      "uid": "35240-cf624c3b-2d62-456e-ab94-702aee1ee18e"
+                                    },
+                                    {
+                                      "name": "Delete Data Store Entry",
+                                      "id": "c7afbdd7-9718-4d22-abdf-4d314c1685eb",
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      },
+                                      "request": {
+                                        "auth": {
+                                          "type": "apikey",
+                                          "apikey": [
+                                            {
+                                              "key": "key",
+                                              "value": "x-api-key",
+                                              "type": "string"
+                                            },
+                                            {
+                                              "key": "value",
+                                              "value": "{{apiKey}}",
+                                              "type": "string"
+                                            },
+                                            {
+                                              "key": "in",
+                                              "value": "header",
+                                              "type": "string"
+                                            }
+                                          ]
+                                        },
+                                        "method": "DELETE",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/datastores/v1/universes/:universeId/standard-datastores/datastore/entries/entry?datastoreName=<string>&entryKey=<string>&scope=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "datastores",
+                                            "v1",
+                                            "universes",
+                                            ":universeId",
+                                            "standard-datastores",
+                                            "datastore",
+                                            "entries",
+                                            "entry"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "datastoreName",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "entryKey",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "key": "scope",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "id": "4ac595a9-c8f1-4492-ba08-a8baf02bc80c",
+                                              "key": "universeId",
+                                              "value": "<string>",
+                                              "description": "(Required) "
+                                            }
+                                          ]
+                                        },
+                                        "description": "Remove an entry from a data store."
+                                      },
+                                      "response": [
+                                        {
+                                          "id": "0d66faf4-931c-4521-9f3c-bbf701d29414",
+                                          "name": "Entry deleted",
+                                          "originalRequest": {
+                                            "method": "DELETE",
+                                            "header": [
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "x-api-key",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/datastores/v1/universes/:universeId/standard-datastores/datastore/entries/entry?datastoreName=<string>&entryKey=<string>&scope=<string>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "datastores",
+                                                "v1",
+                                                "universes",
+                                                ":universeId",
+                                                "standard-datastores",
+                                                "datastore",
+                                                "entries",
+                                                "entry"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) ",
+                                                  "key": "datastoreName",
+                                                  "value": "<string>"
+                                                },
+                                                {
+                                                  "description": "(Required) ",
+                                                  "key": "entryKey",
+                                                  "value": "<string>"
+                                                },
+                                                {
+                                                  "key": "scope",
+                                                  "value": "<string>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "universeId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "No Content",
+                                          "code": 204,
+                                          "_postman_previewlanguage": "text",
+                                          "header": [],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": null,
+                                          "createdAt": "2026-07-28T02:48:41.000Z",
+                                          "updatedAt": "2026-07-28T02:48:41.000Z",
+                                          "uid": "35240-0d66faf4-931c-4521-9f3c-bbf701d29414"
+                                        },
+                                        {
+                                          "id": "7793f6e1-359a-4e9f-aed6-e4868a60938a",
+                                          "name": "Authentication failed",
+                                          "originalRequest": {
+                                            "method": "DELETE",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "description": "Added as a part of security scheme: apikey",
+                                                "key": "x-api-key",
+                                                "value": "<API Key>"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/datastores/v1/universes/:universeId/standard-datastores/datastore/entries/entry?datastoreName=<string>&entryKey=<string>&scope=<string>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "datastores",
+                                                "v1",
+                                                "universes",
+                                                ":universeId",
+                                                "standard-datastores",
+                                                "datastore",
+                                                "entries",
+                                                "entry"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) ",
+                                                  "key": "datastoreName",
+                                                  "value": "<string>"
+                                                },
+                                                {
+                                                  "description": "(Required) ",
+                                                  "key": "entryKey",
+                                                  "value": "<string>"
+                                                },
+                                                {
+                                                  "key": "scope",
+                                                  "value": "<string>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "key": "universeId"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "status": "Unauthorized",
+                                          "code": 401,
+                                          "_postman_previewlanguage": "json",
+                                          "header": [
+                                            {
+                                              "key": "Content-Type",
+                                              "value": "application/json"
+                                            }
+                                          ],
+                                          "cookie": [],
+                                          "responseTime": null,
+                                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                          "createdAt": "2026-07-28T02:48:41.000Z",
+                                          "updatedAt": "2026-07-28T02:48:41.000Z",
+                                          "uid": "35240-7793f6e1-359a-4e9f-aed6-e4868a60938a"
+                                        }
+                                      ],
+                                      "createdAt": "2026-07-28T02:48:41.000Z",
+                                      "updatedAt": "2026-07-28T02:48:41.000Z",
+                                      "uid": "35240-c7afbdd7-9718-4d22-abdf-4d314c1685eb"
+                                    }
+                                  ],
+                                  "id": "c6af6771-aa7d-4817-93c3-13a60bd29e98",
+                                  "createdAt": "2026-07-28T02:48:41.000Z",
+                                  "updatedAt": "2026-07-28T02:48:41.000Z",
+                                  "uid": "35240-c6af6771-aa7d-4817-93c3-13a60bd29e98"
+                                },
+                                {
+                                  "name": "List Data Store Entries",
+                                  "id": "50b00d74-b5d7-48cf-9e7c-6ca04c14d9f9",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "auth": {
+                                      "type": "apikey",
+                                      "apikey": [
+                                        {
+                                          "key": "key",
+                                          "value": "x-api-key",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "value",
+                                          "value": "{{apiKey}}",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "in",
+                                          "value": "header",
+                                          "type": "string"
+                                        }
+                                      ]
+                                    },
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/datastores/v1/universes/:universeId/standard-datastores/datastore/entries?datastoreName=<string>&scope=global&prefix=<string>&limit=<integer>&cursor=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "datastores",
+                                        "v1",
+                                        "universes",
+                                        ":universeId",
+                                        "standard-datastores",
+                                        "datastore",
+                                        "entries"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "datastoreName",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "key": "scope",
+                                          "value": "global"
+                                        },
+                                        {
+                                          "key": "prefix",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "key": "limit",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "key": "cursor",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "108414eb-1c50-4b05-96b0-fa9ff7b4eb4d",
+                                          "key": "universeId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    },
+                                    "description": "List all entries (keys) in a data store."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "c984b81c-f5d2-4ed6-8260-ad25a059b2c3",
+                                      "name": "List of data store entry keys",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "x-api-key",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/datastores/v1/universes/:universeId/standard-datastores/datastore/entries?datastoreName=<string>&scope=global&prefix=<string>&limit=<integer>&cursor=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "datastores",
+                                            "v1",
+                                            "universes",
+                                            ":universeId",
+                                            "standard-datastores",
+                                            "datastore",
+                                            "entries"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "datastoreName",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "key": "scope",
+                                              "value": "global"
+                                            },
+                                            {
+                                              "key": "prefix",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "key": "limit",
+                                              "value": "<integer>"
+                                            },
+                                            {
+                                              "key": "cursor",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "universeId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"keys\": [\n    {\n      \"key\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\"\n    }\n  ],\n  \"nextPageCursor\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T02:48:41.000Z",
+                                      "updatedAt": "2026-07-28T02:48:41.000Z",
+                                      "uid": "35240-c984b81c-f5d2-4ed6-8260-ad25a059b2c3"
+                                    },
+                                    {
+                                      "id": "57f604f6-e874-493e-aa5c-13c3add2f2c8",
+                                      "name": "Authentication failed",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "x-api-key",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/datastores/v1/universes/:universeId/standard-datastores/datastore/entries?datastoreName=<string>&scope=global&prefix=<string>&limit=<integer>&cursor=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "datastores",
+                                            "v1",
+                                            "universes",
+                                            ":universeId",
+                                            "standard-datastores",
+                                            "datastore",
+                                            "entries"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "datastoreName",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "key": "scope",
+                                              "value": "global"
+                                            },
+                                            {
+                                              "key": "prefix",
+                                              "value": "<string>"
+                                            },
+                                            {
+                                              "key": "limit",
+                                              "value": "<integer>"
+                                            },
+                                            {
+                                              "key": "cursor",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "universeId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T02:48:41.000Z",
+                                      "updatedAt": "2026-07-28T02:48:41.000Z",
+                                      "uid": "35240-57f604f6-e874-493e-aa5c-13c3add2f2c8"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T02:48:41.000Z",
+                                  "updatedAt": "2026-07-28T02:48:41.000Z",
+                                  "uid": "35240-50b00d74-b5d7-48cf-9e7c-6ca04c14d9f9"
+                                }
+                              ],
+                              "id": "d2bb08fc-6a64-416d-bd37-fe94e37d8e30",
+                              "createdAt": "2026-07-28T02:48:41.000Z",
+                              "updatedAt": "2026-07-28T02:48:41.000Z",
+                              "uid": "35240-d2bb08fc-6a64-416d-bd37-fe94e37d8e30"
+                            }
+                          ],
+                          "id": "a67559af-724b-40a0-8ef4-ac41393aa316",
+                          "createdAt": "2026-07-28T02:48:41.000Z",
+                          "updatedAt": "2026-07-28T02:48:41.000Z",
+                          "uid": "35240-a67559af-724b-40a0-8ef4-ac41393aa316"
+                        },
+                        {
+                          "name": "List Data Stores",
+                          "id": "ca145da3-78c8-4482-b8f7-18515848a585",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "x-api-key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/datastores/v1/universes/:universeId/standard-datastores?prefix=<string>&limit=<integer>&cursor=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "datastores",
+                                "v1",
+                                "universes",
+                                ":universeId",
+                                "standard-datastores"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter data stores by name prefix",
+                                  "key": "prefix",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "cursor",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "c13f3b02-58ef-4d27-a7c7-f197a9a987ed",
+                                  "key": "universeId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "List all data stores in a universe."
+                          },
+                          "response": [
+                            {
+                              "id": "b20c8df1-ddb6-4fc6-96fd-f661a84ea62f",
+                              "name": "List of data stores",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/datastores/v1/universes/:universeId/standard-datastores?prefix=<string>&limit=<integer>&cursor=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "datastores",
+                                    "v1",
+                                    "universes",
+                                    ":universeId",
+                                    "standard-datastores"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Filter data stores by name prefix",
+                                      "key": "prefix",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "universeId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"datastores\": [\n    {\n      \"name\": \"<string>\",\n      \"createdTime\": \"<dateTime>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"createdTime\": \"<dateTime>\"\n    }\n  ],\n  \"nextPageCursor\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:48:41.000Z",
+                              "updatedAt": "2026-07-28T02:48:41.000Z",
+                              "uid": "35240-b20c8df1-ddb6-4fc6-96fd-f661a84ea62f"
+                            },
+                            {
+                              "id": "4f030872-a02c-434b-9748-ad019f769c38",
+                              "name": "Authentication failed",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "x-api-key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/datastores/v1/universes/:universeId/standard-datastores?prefix=<string>&limit=<integer>&cursor=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "datastores",
+                                    "v1",
+                                    "universes",
+                                    ":universeId",
+                                    "standard-datastores"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Filter data stores by name prefix",
+                                      "key": "prefix",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "key": "cursor",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "universeId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:48:41.000Z",
+                              "updatedAt": "2026-07-28T02:48:41.000Z",
+                              "uid": "35240-4f030872-a02c-434b-9748-ad019f769c38"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:48:41.000Z",
+                          "updatedAt": "2026-07-28T02:48:41.000Z",
+                          "uid": "35240-ca145da3-78c8-4482-b8f7-18515848a585"
+                        }
+                      ],
+                      "id": "69ebe56c-acbc-4f96-bd80-46bb5223baa3",
+                      "createdAt": "2026-07-28T02:48:41.000Z",
+                      "updatedAt": "2026-07-28T02:48:41.000Z",
+                      "uid": "35240-69ebe56c-acbc-4f96-bd80-46bb5223baa3"
+                    }
+                  ],
+                  "id": "6ea21e77-2d78-4228-9436-ebf0276b0981",
+                  "createdAt": "2026-07-28T02:48:41.000Z",
+                  "updatedAt": "2026-07-28T02:48:41.000Z",
+                  "uid": "35240-6ea21e77-2d78-4228-9436-ebf0276b0981"
+                }
+              ],
+              "id": "a869b903-0d3b-454a-8e9f-0067a88595f9",
+              "createdAt": "2026-07-28T02:48:41.000Z",
+              "updatedAt": "2026-07-28T02:48:41.000Z",
+              "uid": "35240-a869b903-0d3b-454a-8e9f-0067a88595f9"
+            }
+          ],
+          "id": "26f14fe4-0ef3-4dc6-8713-629335f45701",
+          "createdAt": "2026-07-28T02:48:41.000Z",
+          "updatedAt": "2026-07-28T02:48:41.000Z",
+          "uid": "35240-26f14fe4-0ef3-4dc6-8713-629335f45701"
+        }
+      ],
+      "id": "a7a1974e-804e-4f68-bb75-318f5b2c5404",
+      "createdAt": "2026-07-28T02:48:41.000Z",
+      "updatedAt": "2026-07-28T02:48:41.000Z",
+      "uid": "35240-a7a1974e-804e-4f68-bb75-318f5b2c5404"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://apis.roblox.com"
+    }
+  ]
+}

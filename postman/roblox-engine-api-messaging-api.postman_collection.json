@@ -1,0 +1,356 @@
+{
+  "info": {
+    "_postman_id": "044e340f-a0de-410b-9d79-ec4b8e31dec0",
+    "name": "Roblox Open Cloud Assets Messaging API",
+    "description": "The Roblox Open Cloud API provides external programmatic access to Roblox platform resources. It enables server-side operations on experiences, places, data stores, memory stores, users, groups, assets, messaging, badges, game passes, and subscriptions. Authentication uses API keys scoped to specific resources. The API is organized into Open Cloud v2, v1, and Legacy tiers with consistent RESTful patterns.\n\nContact Support:\n Name: Roblox Developer Relations",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:48:43.000Z",
+    "updatedAt": "2026-07-28T02:48:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-044e340f-a0de-410b-9d79-ec4b8e31dec0"
+  },
+  "item": [
+    {
+      "name": "messaging-service",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "universes",
+              "item": [
+                {
+                  "name": "{universeId}",
+                  "item": [
+                    {
+                      "name": "topics",
+                      "item": [
+                        {
+                          "name": "{topic}",
+                          "item": [
+                            {
+                              "name": "Publish Message",
+                              "id": "6a965121-e302-4203-9ef7-82e162c63cd0",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "apikey",
+                                  "apikey": [
+                                    {
+                                      "key": "key",
+                                      "value": "x-api-key",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "value",
+                                      "value": "{{apiKey}}",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "in",
+                                      "value": "header",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"message\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/messaging-service/v1/universes/:universeId/topics/:topic",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "messaging-service",
+                                    "v1",
+                                    "universes",
+                                    ":universeId",
+                                    "topics",
+                                    ":topic"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "e9d1f794-b50e-4cb7-90ac-1d9ec9a3a201",
+                                      "key": "universeId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "abaf07ae-7de5-43cc-a2ba-4aa40b9abed0",
+                                      "key": "topic",
+                                      "value": "<string>",
+                                      "description": "(Required) The message topic name (max 80 characters)"
+                                    }
+                                  ]
+                                },
+                                "description": "Publish a message to a topic in the messaging service. Messages are delivered to all servers in the universe subscribed to the topic."
+                              },
+                              "response": [
+                                {
+                                  "id": "8ce89183-e53f-4414-96bd-e5579bdd90b5",
+                                  "name": "Message published",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"message\": \"<string>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/messaging-service/v1/universes/:universeId/topics/:topic",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "messaging-service",
+                                        "v1",
+                                        "universes",
+                                        ":universeId",
+                                        "topics",
+                                        ":topic"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universeId"
+                                        },
+                                        {
+                                          "key": "topic"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T02:48:43.000Z",
+                                  "updatedAt": "2026-07-28T02:48:43.000Z",
+                                  "uid": "35240-8ce89183-e53f-4414-96bd-e5579bdd90b5"
+                                },
+                                {
+                                  "id": "57cbbc75-9bd3-443d-a6b2-a2f2dd025411",
+                                  "name": "Authentication failed",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"message\": \"<string>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/messaging-service/v1/universes/:universeId/topics/:topic",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "messaging-service",
+                                        "v1",
+                                        "universes",
+                                        ":universeId",
+                                        "topics",
+                                        ":topic"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universeId"
+                                        },
+                                        {
+                                          "key": "topic"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T02:48:43.000Z",
+                                  "updatedAt": "2026-07-28T02:48:43.000Z",
+                                  "uid": "35240-57cbbc75-9bd3-443d-a6b2-a2f2dd025411"
+                                },
+                                {
+                                  "id": "1c5ed128-9de3-4e8f-893a-5531bdf117cb",
+                                  "name": "Insufficient permissions for this resource",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "x-api-key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"message\": \"<string>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/messaging-service/v1/universes/:universeId/topics/:topic",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "messaging-service",
+                                        "v1",
+                                        "universes",
+                                        ":universeId",
+                                        "topics",
+                                        ":topic"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "universeId"
+                                        },
+                                        {
+                                          "key": "topic"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T02:48:43.000Z",
+                                  "updatedAt": "2026-07-28T02:48:43.000Z",
+                                  "uid": "35240-1c5ed128-9de3-4e8f-893a-5531bdf117cb"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T02:48:43.000Z",
+                              "updatedAt": "2026-07-28T02:48:43.000Z",
+                              "uid": "35240-6a965121-e302-4203-9ef7-82e162c63cd0"
+                            }
+                          ],
+                          "id": "755890a6-78ec-49e8-abce-1a9ad04c6fec",
+                          "createdAt": "2026-07-28T02:48:43.000Z",
+                          "updatedAt": "2026-07-28T02:48:43.000Z",
+                          "uid": "35240-755890a6-78ec-49e8-abce-1a9ad04c6fec"
+                        }
+                      ],
+                      "id": "d6bd32f3-855d-4193-b378-ba9ba1435d84",
+                      "createdAt": "2026-07-28T02:48:43.000Z",
+                      "updatedAt": "2026-07-28T02:48:43.000Z",
+                      "uid": "35240-d6bd32f3-855d-4193-b378-ba9ba1435d84"
+                    }
+                  ],
+                  "id": "657639a2-f879-4714-a246-8c004def74c6",
+                  "createdAt": "2026-07-28T02:48:43.000Z",
+                  "updatedAt": "2026-07-28T02:48:43.000Z",
+                  "uid": "35240-657639a2-f879-4714-a246-8c004def74c6"
+                }
+              ],
+              "id": "1bc743c0-d471-4ad8-a5bd-ac19c3e134a2",
+              "createdAt": "2026-07-28T02:48:43.000Z",
+              "updatedAt": "2026-07-28T02:48:43.000Z",
+              "uid": "35240-1bc743c0-d471-4ad8-a5bd-ac19c3e134a2"
+            }
+          ],
+          "id": "ee5b4955-44a6-44dc-8cec-77e11c6585e2",
+          "createdAt": "2026-07-28T02:48:43.000Z",
+          "updatedAt": "2026-07-28T02:48:43.000Z",
+          "uid": "35240-ee5b4955-44a6-44dc-8cec-77e11c6585e2"
+        }
+      ],
+      "id": "0241fa50-9cd3-40ce-854c-2e61c4dd10e3",
+      "createdAt": "2026-07-28T02:48:43.000Z",
+      "updatedAt": "2026-07-28T02:48:43.000Z",
+      "uid": "35240-0241fa50-9cd3-40ce-854c-2e61c4dd10e3"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://apis.roblox.com"
+    }
+  ]
+}

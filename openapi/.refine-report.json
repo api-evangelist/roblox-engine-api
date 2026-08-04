@@ -1,0 +1,26 @@
+{
+  "provider": "roblox-engine-api",
+  "sources": [
+    "roblox-engine-api-assets-api-openapi.yml",
+    "roblox-engine-api-data-stores-api-openapi.yml",
+    "roblox-engine-api-groups-api-openapi.yml",
+    "roblox-engine-api-messaging-api-openapi.yml",
+    "roblox-engine-api-places-api-openapi.yml",
+    "roblox-engine-api-universes-api-openapi.yml",
+    "roblox-engine-api-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "roblox-engine-api-assets-api-openapi.yml",
+    "roblox-engine-api-data-stores-api-openapi.yml",
+    "roblox-engine-api-groups-api-openapi.yml",
+    "roblox-engine-api-messaging-api-openapi.yml",
+    "roblox-engine-api-places-api-openapi.yml",
+    "roblox-engine-api-universes-api-openapi.yml",
+    "roblox-engine-api-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
