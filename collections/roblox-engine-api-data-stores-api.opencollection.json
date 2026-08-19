@@ -1,0 +1,245 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roblox Open Cloud Assets Data Stores API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Stores",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Data Stores",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.roblox.com/datastores/v1/universes/:universeId/standard-datastores",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "query",
+                "description": "Filter data stores by name prefix"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all data stores in a universe."
+        },
+        {
+          "info": {
+            "name": "List Data Store Entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.roblox.com/datastores/v1/universes/:universeId/standard-datastores/datastore/entries",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "datastoreName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all entries (keys) in a data store."
+        },
+        {
+          "info": {
+            "name": "Get Data Store Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.roblox.com/datastores/v1/universes/:universeId/standard-datastores/datastore/entries/entry",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "datastoreName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "entryKey",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "versionId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve the value and metadata for a specific data store entry."
+        },
+        {
+          "info": {
+            "name": "Set Data Store Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.roblox.com/datastores/v1/universes/:universeId/standard-datastores/datastore/entries/entry",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "datastoreName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "entryKey",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "matchVersion",
+                "value": "",
+                "type": "query",
+                "description": "Only update if current version matches"
+              },
+              {
+                "name": "exclusiveCreate",
+                "value": "",
+                "type": "query",
+                "description": "Only create if entry does not exist"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Set or update the value of a data store entry."
+        },
+        {
+          "info": {
+            "name": "Delete Data Store Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://apis.roblox.com/datastores/v1/universes/:universeId/standard-datastores/datastore/entries/entry",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "datastoreName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "entryKey",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Remove an entry from a data store."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

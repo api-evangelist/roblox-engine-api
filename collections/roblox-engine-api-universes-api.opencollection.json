@@ -1,0 +1,163 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roblox Open Cloud Assets Universes API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Universes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Universe",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.roblox.com/cloud/v2/universes/:universeId",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path",
+                "description": "The universe ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve details about a Roblox experience (universe) by its ID."
+        },
+        {
+          "info": {
+            "name": "Update Universe",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.roblox.com/cloud/v2/universes/:universeId",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "updateMask",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update settings for a Roblox experience (universe)."
+        },
+        {
+          "info": {
+            "name": "Restart Universe Servers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.roblox.com/cloud/v2/universes/:universeId:restart-servers",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Restart all active game servers for a universe."
+        },
+        {
+          "info": {
+            "name": "Get User Restriction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.roblox.com/cloud/v2/universes/:universeId/user-restrictions/:userId",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Check if a user is restricted from a universe."
+        },
+        {
+          "info": {
+            "name": "Update User Restriction",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.roblox.com/cloud/v2/universes/:universeId/user-restrictions/:userId",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Ban or unban a user from a universe."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Roblox Open Cloud Assets Places API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Places",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Place",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://apis.roblox.com/cloud/v2/universes/:universeId/places/:placeId",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "placeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve details about a specific place within a universe."
+        },
+        {
+          "info": {
+            "name": "Update Place",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://apis.roblox.com/cloud/v2/universes/:universeId/places/:placeId",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "placeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update settings for a place."
+        },
+        {
+          "info": {
+            "name": "Publish Place",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apis.roblox.com/universes/v1/:universeId/places/:placeId/versions",
+            "params": [
+              {
+                "name": "universeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "placeId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "versionType",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Publish a new version of a place by uploading a .rbxl or .rbxlx file. This deploys the new place version to production."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
