@@ -74,6 +74,8 @@ apis:
   humanURL: https://create.roblox.com/docs/reference/engine
   baseURL: https://apis.roblox.com
   tags:
+  - Datastores
+  tags_raw:
   - Data Stores
   properties:
   - type: OpenAPI
@@ -95,6 +97,8 @@ apis:
   humanURL: https://create.roblox.com/docs/reference/engine
   baseURL: https://apis.roblox.com
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -179,6 +183,8 @@ apis:
   humanURL: https://create.roblox.com/docs/reference/engine
   baseURL: https://apis.roblox.com
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
