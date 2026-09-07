@@ -21,6 +21,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "roblox-engine-api-assets-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "roblox-engine-api-data-stores-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "roblox-engine-api-groups-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "roblox-engine-api-messaging-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "roblox-engine-api-places-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "roblox-engine-api-universes-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "roblox-engine-api-users-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

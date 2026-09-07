@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Roblox Open Cloud Assets Universes API
   description: The Roblox Open Cloud API provides external programmatic access to Roblox platform resources. It enables server-side operations on experiences, places, data stores, memory stores, users, groups, assets, messaging, badges, game passes, and subscriptions. Authentication uses API keys scoped to specific resources. The API is organized into Open Cloud v2, v1, and Legacy tiers with consistent RESTful patterns.
@@ -170,6 +170,17 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: object
     UserRestriction:
       type: object
       properties:
@@ -189,26 +200,6 @@ components:
           type: boolean
         inherited:
           type: boolean
-    UpdateUniverseRequest:
-      type: object
-      properties:
-        displayName:
-          type: string
-        description:
-          type: string
-        visibility:
-          type: string
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            type: object
     Universe:
       type: object
       properties:
@@ -233,9 +224,18 @@ components:
         updateTime:
           type: string
           format: date-time
+    UpdateUniverseRequest:
+      type: object
+      properties:
+        displayName:
+          type: string
+        description:
+          type: string
+        visibility:
+          type: string
   responses:
-    Unauthorized:
-      description: Authentication failed
+    Forbidden:
+      description: Insufficient permissions for this resource
       content:
         application/json:
           schema:
@@ -246,8 +246,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Forbidden:
-      description: Insufficient permissions for this resource
+    Unauthorized:
+      description: Authentication failed
       content:
         application/json:
           schema:

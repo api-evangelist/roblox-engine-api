@@ -251,3 +251,5 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-parent: roblox
+x-relationship: product
