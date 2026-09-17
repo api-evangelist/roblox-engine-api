@@ -81,29 +81,6 @@ apis:
   - type: JSONSchema
     url: >-
       https://raw.githubusercontent.com/api-evangelist/roblox-engine-api/refs/heads/main/json-schema/roblox-user-schema.json
-- aid: roblox-engine-api:roblox-engine-api-data-stores-api
-  name: Roblox Engine API Data Stores API
-  description: Persistent data storage for experiences
-  humanURL: https://create.roblox.com/docs/reference/engine
-  baseURL: https://apis.roblox.com
-  tags:
-  - Datastores
-  tags_raw:
-  - Data Stores
-  properties:
-  - type: OpenAPI
-    url: openapi/roblox-engine-api-data-stores-api-openapi.yml
-  - type: Documentation
-    url: https://create.roblox.com/docs/cloud/reference
-  - type: SpectralRules
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/roblox-engine-api/refs/heads/main/rules/roblox-open-cloud-rules.yml
-  - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/roblox-engine-api/refs/heads/main/json-schema/roblox-universe-schema.json
-  - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/roblox-engine-api/refs/heads/main/json-schema/roblox-user-schema.json
 - aid: roblox-engine-api:roblox-engine-api-groups-api
   name: Roblox Engine API Groups API
   description: Roblox group management
@@ -202,6 +179,27 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/roblox-engine-api-users-api-openapi.yml
+  - type: Documentation
+    url: https://create.roblox.com/docs/cloud/reference
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/roblox-engine-api/refs/heads/main/rules/roblox-open-cloud-rules.yml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/roblox-engine-api/refs/heads/main/json-schema/roblox-universe-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/roblox-engine-api/refs/heads/main/json-schema/roblox-user-schema.json
+- aid: roblox-engine-api:roblox-engine-api-datastores-api
+  name: Roblox Engine API Datastores API
+  description: Persistent data storage for experiences
+  humanURL: https://create.roblox.com/docs/reference/engine
+  baseURL: https://apis.roblox.com
+  tags:
+  - Datastores
+  properties:
+  - type: OpenAPI
+    url: openapi/roblox-engine-api-datastores-api-openapi.yml
   - type: Documentation
     url: https://create.roblox.com/docs/cloud/reference
   - type: SpectralRules
