@@ -1,13 +1,7 @@
 {
   "provider": "roblox-engine-api",
   "sources": [
-    "roblox-engine-api-assets-api-openapi.yml",
-    "roblox-engine-api-data-stores-api-openapi.yml",
-    "roblox-engine-api-groups-api-openapi.yml",
-    "roblox-engine-api-messaging-api-openapi.yml",
-    "roblox-engine-api-places-api-openapi.yml",
-    "roblox-engine-api-universes-api-openapi.yml",
-    "roblox-engine-api-users-api-openapi.yml"
+    "_original/roblox-open-cloud-openapi.yml"
   ],
   "outputs": [
     "roblox-engine-api-assets-api-openapi.yml",
@@ -18,18 +12,24 @@
     "roblox-engine-api-universes-api-openapi.yml",
     "roblox-engine-api-users-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "roblox-engine-api-assets-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "roblox-engine-api-data-stores-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "roblox-engine-api-groups-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "roblox-engine-api-messaging-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "roblox-engine-api-places-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "roblox-engine-api-universes-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "roblox-engine-api-users-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "roblox-open-cloud-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "superseded outputs removed: roblox-engine-api-datastores-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 8 total)"
   ],
-  "skipped": []
+  "skipped": [
+    "roblox-engine-api-assets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "roblox-engine-api-datastores-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "roblox-engine-api-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "roblox-engine-api-messaging-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "roblox-engine-api-places-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "roblox-engine-api-universes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "roblox-engine-api-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

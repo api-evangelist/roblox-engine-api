@@ -101,6 +101,27 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    Operation:
+      type: object
+      properties:
+        path:
+          type: string
+        done:
+          type: boolean
+        response:
+          type: object
+    CreateAssetRequest:
+      type: object
+      required:
+      - request
+      - fileContent
+      properties:
+        request:
+          type: string
+          description: JSON-encoded asset metadata
+        fileContent:
+          type: string
+          format: binary
     Error:
       type: object
       properties:
@@ -121,27 +142,6 @@ components:
         fileContent:
           type: string
           format: binary
-    CreateAssetRequest:
-      type: object
-      required:
-      - request
-      - fileContent
-      properties:
-        request:
-          type: string
-          description: JSON-encoded asset metadata
-        fileContent:
-          type: string
-          format: binary
-    Operation:
-      type: object
-      properties:
-        path:
-          type: string
-        done:
-          type: boolean
-        response:
-          type: object
     Asset:
       type: object
       properties:
