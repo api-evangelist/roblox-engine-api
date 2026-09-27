@@ -83,6 +83,17 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: object
     GroupMembershipList:
       type: object
       properties:
@@ -91,15 +102,6 @@ components:
           items:
             $ref: '#/components/schemas/GroupMembership'
         nextPageToken:
-          type: string
-    GroupMembership:
-      type: object
-      properties:
-        path:
-          type: string
-        user:
-          type: string
-        role:
           type: string
     User:
       type: object
@@ -125,17 +127,6 @@ components:
           type: boolean
         socialNetworkProfiles:
           type: object
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            type: object
     Group:
       type: object
       properties:
@@ -161,6 +152,15 @@ components:
         updateTime:
           type: string
           format: date-time
+    GroupMembership:
+      type: object
+      properties:
+        path:
+          type: string
+        user:
+          type: string
+        role:
+          type: string
   responses:
     NotFound:
       description: Resource not found

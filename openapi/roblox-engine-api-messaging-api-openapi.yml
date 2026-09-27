@@ -72,14 +72,14 @@ components:
           type: string
           description: The message content (max 1kB)
   responses:
-    Forbidden:
-      description: Insufficient permissions for this resource
+    Unauthorized:
+      description: Authentication failed
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed
+    Forbidden:
+      description: Insufficient permissions for this resource
       content:
         application/json:
           schema:

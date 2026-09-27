@@ -235,6 +235,44 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: object
+    DataStoreEntryList:
+      type: object
+      properties:
+        keys:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+        nextPageCursor:
+          type: string
+    DataStoreList:
+      type: object
+      properties:
+        datastores:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              createdTime:
+                type: string
+                format: date-time
+        nextPageCursor:
+          type: string
     DataStoreEntry:
       type: object
       properties:
@@ -264,44 +302,6 @@ components:
         objectCreatedTime:
           type: string
           format: date-time
-    DataStoreList:
-      type: object
-      properties:
-        datastores:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              createdTime:
-                type: string
-                format: date-time
-        nextPageCursor:
-          type: string
-    DataStoreEntryList:
-      type: object
-      properties:
-        keys:
-          type: array
-          items:
-            type: object
-            properties:
-              key:
-                type: string
-        nextPageCursor:
-          type: string
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            type: object
   responses:
     NotFound:
       description: Resource not found
