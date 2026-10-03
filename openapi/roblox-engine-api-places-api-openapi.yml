@@ -130,7 +130,52 @@ paths:
         '403':
           $ref: '#/components/responses/Forbidden'
 components:
+  responses:
+    Forbidden:
+      description: Insufficient permissions for this resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    UpdatePlaceRequest:
+      type: object
+      properties:
+        displayName:
+          type: string
+        description:
+          type: string
+        serverSize:
+          type: integer
+    Place:
+      type: object
+      properties:
+        id:
+          type: string
+        displayName:
+          type: string
+        description:
+          type: string
+        serverSize:
+          type: integer
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
     Error:
       type: object
       properties:
@@ -149,51 +194,6 @@ components:
           type: integer
         versionType:
           type: string
-    Place:
-      type: object
-      properties:
-        id:
-          type: string
-        displayName:
-          type: string
-        description:
-          type: string
-        serverSize:
-          type: integer
-        createTime:
-          type: string
-          format: date-time
-        updateTime:
-          type: string
-          format: date-time
-    UpdatePlaceRequest:
-      type: object
-      properties:
-        displayName:
-          type: string
-        description:
-          type: string
-        serverSize:
-          type: integer
-  responses:
-    Forbidden:
-      description: Insufficient permissions for this resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

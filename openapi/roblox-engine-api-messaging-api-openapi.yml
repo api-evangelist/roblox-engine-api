@@ -52,6 +52,14 @@ paths:
           $ref: '#/components/responses/Forbidden'
 components:
   schemas:
+    PublishMessageRequest:
+      type: object
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: The message content (max 1kB)
     Error:
       type: object
       properties:
@@ -63,23 +71,15 @@ components:
           type: array
           items:
             type: object
-    PublishMessageRequest:
-      type: object
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: The message content (max 1kB)
   responses:
-    Unauthorized:
-      description: Authentication failed
+    Forbidden:
+      description: Insufficient permissions for this resource
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Forbidden:
-      description: Insufficient permissions for this resource
+    Unauthorized:
+      description: Authentication failed
       content:
         application/json:
           schema:

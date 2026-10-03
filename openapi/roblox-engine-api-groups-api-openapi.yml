@@ -83,26 +83,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            type: object
-    GroupMembershipList:
-      type: object
-      properties:
-        groupMemberships:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupMembership'
-        nextPageToken:
-          type: string
     User:
       type: object
       properties:
@@ -127,6 +107,24 @@ components:
           type: boolean
         socialNetworkProfiles:
           type: object
+    GroupMembership:
+      type: object
+      properties:
+        path:
+          type: string
+        user:
+          type: string
+        role:
+          type: string
+    GroupMembershipList:
+      type: object
+      properties:
+        groupMemberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupMembership'
+        nextPageToken:
+          type: string
     Group:
       type: object
       properties:
@@ -152,24 +150,26 @@ components:
         updateTime:
           type: string
           format: date-time
-    GroupMembership:
+    Error:
       type: object
       properties:
-        path:
+        code:
+          type: integer
+        message:
           type: string
-        user:
-          type: string
-        role:
-          type: string
+        details:
+          type: array
+          items:
+            type: object
   responses:
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Authentication failed
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:

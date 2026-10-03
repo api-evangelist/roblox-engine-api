@@ -100,27 +100,20 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            type: object
-    Operation:
-      type: object
-      properties:
-        path:
-          type: string
-        done:
-          type: boolean
-        response:
-          type: object
     Asset:
       type: object
       properties:
@@ -138,6 +131,15 @@ components:
           type: object
         state:
           type: string
+    Operation:
+      type: object
+      properties:
+        path:
+          type: string
+        done:
+          type: boolean
+        response:
+          type: object
     CreateAssetRequest:
       type: object
       required:
@@ -150,6 +152,17 @@ components:
         fileContent:
           type: string
           format: binary
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: object
     UpdateAssetRequest:
       type: object
       properties:
@@ -159,19 +172,6 @@ components:
         fileContent:
           type: string
           format: binary
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

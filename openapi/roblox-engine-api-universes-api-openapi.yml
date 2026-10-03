@@ -169,7 +169,35 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Forbidden:
+      description: Insufficient permissions for this resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    UpdateUniverseRequest:
+      type: object
+      properties:
+        displayName:
+          type: string
+        description:
+          type: string
+        visibility:
+          type: string
     Error:
       type: object
       properties:
@@ -181,34 +209,6 @@ components:
           type: array
           items:
             type: object
-    UserRestriction:
-      type: object
-      properties:
-        active:
-          type: boolean
-        startTime:
-          type: string
-          format: date-time
-        duration:
-          type: string
-          description: Duration in ISO 8601 duration format
-        privateReason:
-          type: string
-        displayReason:
-          type: string
-        excludeAltAccounts:
-          type: boolean
-        inherited:
-          type: boolean
-    UpdateUniverseRequest:
-      type: object
-      properties:
-        displayName:
-          type: string
-        description:
-          type: string
-        visibility:
-          type: string
     Universe:
       type: object
       properties:
@@ -233,25 +233,25 @@ components:
         updateTime:
           type: string
           format: date-time
-  responses:
-    Forbidden:
-      description: Insufficient permissions for this resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    UserRestriction:
+      type: object
+      properties:
+        active:
+          type: boolean
+        startTime:
+          type: string
+          format: date-time
+        duration:
+          type: string
+          description: Duration in ISO 8601 duration format
+        privateReason:
+          type: string
+        displayReason:
+          type: string
+        excludeAltAccounts:
+          type: boolean
+        inherited:
+          type: boolean
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
