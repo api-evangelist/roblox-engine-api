@@ -101,45 +101,19 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   responses:
-    Unauthorized:
-      description: Authentication failed
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     NotFound:
       description: Resource not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Asset:
-      type: object
-      properties:
-        assetId:
-          type: string
-        assetType:
-          type: string
-        displayName:
-          type: string
-        description:
-          type: string
-        creationContext:
-          type: object
-        moderationResult:
-          type: object
-        state:
-          type: string
-    Operation:
-      type: object
-      properties:
-        path:
-          type: string
-        done:
-          type: boolean
-        response:
-          type: object
     CreateAssetRequest:
       type: object
       required:
@@ -163,6 +137,23 @@ components:
           type: array
           items:
             type: object
+    Asset:
+      type: object
+      properties:
+        assetId:
+          type: string
+        assetType:
+          type: string
+        displayName:
+          type: string
+        description:
+          type: string
+        creationContext:
+          type: object
+        moderationResult:
+          type: object
+        state:
+          type: string
     UpdateAssetRequest:
       type: object
       properties:
@@ -172,6 +163,15 @@ components:
         fileContent:
           type: string
           format: binary
+    Operation:
+      type: object
+      properties:
+        path:
+          type: string
+        done:
+          type: boolean
+        response:
+          type: object
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

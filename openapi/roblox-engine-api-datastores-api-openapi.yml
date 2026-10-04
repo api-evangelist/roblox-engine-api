@@ -234,19 +234,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication failed
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     DataStoreEntryMetadata:
       type: object
@@ -263,6 +250,31 @@ components:
         objectCreatedTime:
           type: string
           format: date-time
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: object
+    DataStoreEntry:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties: true
+        version:
+          type: string
+        attributes:
+          type: object
+        userIds:
+          type: array
+          items:
+            type: integer
     DataStoreList:
       type: object
       properties:
@@ -278,20 +290,6 @@ components:
                 format: date-time
         nextPageCursor:
           type: string
-    DataStoreEntry:
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties: true
-        version:
-          type: string
-        attributes:
-          type: object
-        userIds:
-          type: array
-          items:
-            type: integer
     DataStoreEntryList:
       type: object
       properties:
@@ -304,17 +302,19 @@ components:
                 type: string
         nextPageCursor:
           type: string
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            type: object
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
