@@ -212,6 +212,12 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/roblox-engine-api/refs/heads/main/json-schema/roblox-user-schema.json
 common:
+  - type: Plans
+    url: plans/roblox-engine-api-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/roblox-engine-api-rate-limits.yml
+  - type: FinOps
+    url: finops/roblox-engine-api-finops.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/roblox-engine-api/overview
   - type: AgenticAccess
