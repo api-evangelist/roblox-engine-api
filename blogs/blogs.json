@@ -2,8 +2,8 @@
   "repo": "roblox-engine-api",
   "feeds": [
     {
-      "source": "https://github.com/Roblox",
-      "feed_url": "https://github.com/Roblox",
+      "source": "https://blog.roblox.com",
+      "feed_url": "https://blog.roblox.com",
       "title": "",
       "saved": 0,
       "method": "none"
@@ -14,10 +14,14 @@
       "title": "",
       "saved": 0,
       "method": "none"
+    },
+    {
+      "source": "https://github.com/Roblox",
+      "error": "HTTPError"
     }
   ],
   "post_count": 7,
-  "fetched": "2026-10-03T12:30:02Z",
+  "fetched": "2026-10-10T13:15:00Z",
   "agent_pulled": "2026-07-04",
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
