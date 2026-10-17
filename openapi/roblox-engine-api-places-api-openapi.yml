@@ -130,6 +130,51 @@ paths:
         '403':
           $ref: '#/components/responses/Forbidden'
 components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: object
+    PlaceVersion:
+      type: object
+      properties:
+        versionNumber:
+          type: integer
+        versionType:
+          type: string
+    Place:
+      type: object
+      properties:
+        id:
+          type: string
+        displayName:
+          type: string
+        description:
+          type: string
+        serverSize:
+          type: integer
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+    UpdatePlaceRequest:
+      type: object
+      properties:
+        displayName:
+          type: string
+        description:
+          type: string
+        serverSize:
+          type: integer
   responses:
     Forbidden:
       description: Insufficient permissions for this resource
@@ -149,51 +194,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  schemas:
-    UpdatePlaceRequest:
-      type: object
-      properties:
-        displayName:
-          type: string
-        description:
-          type: string
-        serverSize:
-          type: integer
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            type: object
-    Place:
-      type: object
-      properties:
-        id:
-          type: string
-        displayName:
-          type: string
-        description:
-          type: string
-        serverSize:
-          type: integer
-        createTime:
-          type: string
-          format: date-time
-        updateTime:
-          type: string
-          format: date-time
-    PlaceVersion:
-      type: object
-      properties:
-        versionNumber:
-          type: integer
-        versionType:
-          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

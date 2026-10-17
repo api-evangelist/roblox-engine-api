@@ -100,20 +100,27 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    Operation:
+      type: object
+      properties:
+        path:
+          type: string
+        done:
+          type: boolean
+        response:
+          type: object
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: object
     CreateAssetRequest:
       type: object
       required:
@@ -126,17 +133,15 @@ components:
         fileContent:
           type: string
           format: binary
-    Error:
+    UpdateAssetRequest:
       type: object
       properties:
-        code:
-          type: integer
-        message:
+        request:
           type: string
-        details:
-          type: array
-          items:
-            type: object
+          description: JSON-encoded update metadata
+        fileContent:
+          type: string
+          format: binary
     Asset:
       type: object
       properties:
@@ -154,24 +159,19 @@ components:
           type: object
         state:
           type: string
-    UpdateAssetRequest:
-      type: object
-      properties:
-        request:
-          type: string
-          description: JSON-encoded update metadata
-        fileContent:
-          type: string
-          format: binary
-    Operation:
-      type: object
-      properties:
-        path:
-          type: string
-        done:
-          type: boolean
-        response:
-          type: object
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
